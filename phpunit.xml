@@ -1,0 +1,69 @@
+<phpunit
+    backupGlobals="true"
+    bootstrap="tests/bootstrap.php"
+    cacheDirectory="var/cache/phpunit"
+    processIsolation="true"
+    executionOrder="depends,defects"
+    colors="true"
+    testdox="true"
+    requireCoverageMetadata="true"
+    beStrictAboutCoverageMetadata="true"
+    beStrictAboutOutputDuringTests="false"
+    beStrictAboutChangesToGlobalState="true"
+    stopOnError="true"
+    stopOnFailure="true"
+    stopOnWarning="true"
+    stopOnDeprecation="true"
+    stopOnNotice="true"
+    failOnEmptyTestSuite="true"
+    failOnWarning="true"
+    failOnRisky="true"
+    failOnDeprecation="true"
+    failOnPhpunitDeprecation="true"
+    failOnNotice="true"
+>
+    <source>
+        <include>
+            <directory suffix=".php">src</directory>
+        </include>
+    </source>
+    <testsuites>
+        <testsuite name="contribuyentes">
+            <directory>tests/sii/contribuyentes</directory>
+        </testsuite>
+        <testsuite name="facturacion">
+            <directory>tests/sii/facturacion</directory>
+        </testsuite>
+        <testsuite name="bhe">
+            <directory>tests/sii/bhe</directory>
+        </testsuite>
+        <testsuite name="bte">
+            <directory>tests/sii/bte</directory>
+        </testsuite>
+        <testsuite name="remuneraciones">
+            <directory>tests/sii/remuneraciones</directory>
+        </testsuite>
+        <testsuite name="movimientos">
+            <directory>tests/sii/ingresos_egresos</directory>
+        </testsuite>
+    </testsuites>
+    <coverage
+        ignoreDeprecatedCodeUnits="true"
+        pathCoverage="true"
+    >
+        <report>
+            <text
+                outputFile="var/tests-coverage.txt"
+                showUncoveredFiles="true"
+            />
+            <clover outputFile="var/tests-coverage.xml" />
+        </report>
+    </coverage>
+    <logging>
+        <testdoxText outputFile="var/tests-testdox.txt"/>
+    </logging>
+    <php>
+        <ini name="memory_limit" value="-1" />
+        <env name="CONTAFI_API_URL" value="https://contafi.cl" />
+    </php>
+</phpunit>

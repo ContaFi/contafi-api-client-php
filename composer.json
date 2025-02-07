@@ -1,0 +1,44 @@
+{
+    "name": "contafi/contafi-api-client",
+    "description": "Cliente para realizar la integración con los servicios web de ContaFi desde PHP.",
+    "type": "library",
+    "keywords": ["contafi"],
+    "homepage": "https://www.contafi.cl",
+    "license": "LGPL-3.0+",
+    "authors": [
+        {
+            "name": "ContaFi",
+            "homepage": "https://www.contafi.cl"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/ContaFi/contafi-api-client-php/issues",
+        "source": "https://github.com/ContaFi/contafi-api-client-php"
+    },
+    "require": {
+        "guzzlehttp/guzzle": "^7",
+        "php": "^8.2 || ^8.3"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.63",
+        "phpstan/phpstan": "^1.12",
+        "phpunit/phpunit": "^11.3",
+        "vlucas/phpdotenv": "^5.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "contafi\\api_client\\": "src/",
+            "contafi\\api_client\\client\\": "src/client/"
+        }
+    },
+    "scripts": {
+        "docs": "php tools/phpdocumentor run --config=phpdoc.xml",
+        "tests": "XDEBUG_MODE=coverage vendor/bin/phpunit --configuration=phpunit.xml",
+        "tests-contribuyentes": "vendor/bin/phpunit --configuration=phpunit.xml --no-coverage --testsuite contribuyentes",
+        "tests-readonly": "XDEBUG_MODE=coverage vendor/bin/phpunit --configuration=phpunit.xml --filter 'testObtenerDatosContribuyente|testObtenerEstadisticasContribuyente|testObtenerRoles|testListarMovimientos|testListarRemuneraciones'",
+        "phpcs-fix": "php-cs-fixer fix -v --config=php-cs-fixer.php .",
+        "phpcs-fix-dry-run": "php-cs-fixer fix -v --dry-run --diff --config=php-cs-fixer.php .",
+        "phpstan": "phpstan analyse --configuration=phpstan.neon --memory-limit=1G",
+        "phpstan-export": "phpstan analyse --configuration=phpstan.neon --level 9 --generate-baseline"
+    }
+}
