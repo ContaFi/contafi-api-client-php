@@ -46,10 +46,28 @@ class ObservarBheRecibidaTest extends TestCase
      */
     protected static $client;
 
+    /**
+     * Variable de pruebas de número de BHE.
+     *
+     * @var int|null
+     */
+    protected static $testNumero;
+
+    /**
+     * RUT del emisor de la BHE observada. Sin puntos y con DV.
+     *
+     * Ejemplo: 12345678-9
+     *
+     * @var string
+     */
+    protected static string $testEmisor;
+
     public static function setUpBeforeClass(): void
     {
-        self::$verbose = env('TEST_VERBOSE', false);
+        self::$verbose = env(varname: 'TEST_VERBOSE', default: false);
         self::$client = new Bhe();
+        self::$testNumero = env('TEST_NRO_BHE', null);
+        self::$testEmisor = env('TEST_EMISOR', '');
     }
 
     /**
@@ -59,38 +77,45 @@ class ObservarBheRecibidaTest extends TestCase
      * búsqueda falla, o si ocurre un error de conexión.
      * @return void
      */
-    public function testObservarBheRecibida()
+    public function testObservarBheRecibida(): void
     {
-        $filtros = [
-            'periodo' => date('Ym'),
-        ];
         $data = [
-            'causa' => 3,
+            'causa' => 1,
+        ];
+        $filtros = [
+            'periodo' => env(varname: 'TEST_PERIODO', default: date('Ym')),
         ];
         try {
-            $listadoBhes = self::$client->listadoBhes($filtros);
-            $emisor = json_decode(
-                $listadoBhes->getBody()->getContents(),
-                true
-            )['results'][0]['emisor'];
-            $numero = json_decode(
-                $listadoBhes->getBody()->getContents(),
-                true
-            )['results'][0]['numero'];
+            if (!isset(self::$testNumero) and self::$testEmisor != '') {
 
-            $response = self::$client->observarBhe(
-                $emisor,
-                $numero,
+                $listadoBhes = self::$client->listado($filtros);
+                $bodyDecoded = json_decode(
+                    json: $listadoBhes->getBody()->getContents(),
+                    associative: true
+                )['results'][0];
+
+                $emisorRut = $bodyDecoded['emisor']['contribuyente']['rut'];
+                $emisorDv = $bodyDecoded['emisor']['contribuyente']['dv'];
+                self::$testNumero = $bodyDecoded['numero'];
+
+                self::$testEmisor = sprintf('%s-%s', $emisorRut, $emisorDv);
+            }
+            $response = self::$client->observar(
+                self::$testEmisor,
+                self::$testNumero,
                 $data
             );
 
             $this->assertSame(200, $response->getStatusCode());
 
             if (self::$verbose) {
-                echo "\n",'testObservarBheRecibida() BHE: ',$response->getBody()->getContents(),"\n";
+                echo "\n",
+                'testObservarBheRecibida() BHE: ',
+                $response->getBody()->getContents(),
+                "\n";
             }
         } catch (ApiException $e) {
-            throw new ApiException(sprintf(
+            throw new ApiException(message: sprintf(
                 '[ApiException %d] %s',
                 $e->getCode(),
                 $e->getMessage()

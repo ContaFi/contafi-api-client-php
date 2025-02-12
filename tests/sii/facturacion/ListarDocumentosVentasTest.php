@@ -48,7 +48,7 @@ class ListarDocumentosVentasTest extends TestCase
 
     public static function setUpBeforeClass(): void
     {
-        self::$verbose = env('TEST_VERBOSE', false);
+        self::$verbose = env(varname: 'TEST_VERBOSE', default: false);
         self::$client = new Facturacion();
     }
 
@@ -59,10 +59,10 @@ class ListarDocumentosVentasTest extends TestCase
      * búsqueda falla, o si ocurre un error de conexión.
      * @return void
      */
-    public function testListarDocumentosVentas()
+    public function testListarDocumentosVentas(): void
     {
         $filtros = [
-            'periodo' => date('Ym'),
+            'periodo' => env(varname: 'TEST_PERIODO', default: date('Ym')),
         ];
         try {
             $response = self::$client->listadoVentas($filtros);
@@ -70,10 +70,13 @@ class ListarDocumentosVentasTest extends TestCase
             $this->assertSame(200, $response->getStatusCode());
 
             if (self::$verbose) {
-                echo "\n",'testListarDocumentosVentas() Documentos: ',$response->getBody()->getContents(),"\n";
+                echo "\n",
+                'testListarDocumentosVentas() Documentos: ',
+                $response->getBody()->getContents(),
+                "\n";
             }
         } catch (ApiException $e) {
-            throw new ApiException(sprintf(
+            throw new ApiException(message: sprintf(
                 '[ApiException %d] %s',
                 $e->getCode(),
                 $e->getMessage()

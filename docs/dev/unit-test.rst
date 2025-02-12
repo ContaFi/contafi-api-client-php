@@ -1,8 +1,6 @@
 Pruebas unitarias
 =================
 
-Para ejecutar las pruebas unitarias se necesita tener instaladas las dependencias de composer y luego ejecutar:
-
 .. important::
   Al ejecutar pruebas, deberás tener configuradas las variables de entorno necesarias en el archivo test.env. Favor de duplicar test.env-dist, cambiar su nombre a test.env y rellenar las variables necesarias.
 

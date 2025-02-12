@@ -31,9 +31,9 @@ class ApiBase extends ApiClient
     /**
      * Clase base para las clases que consumen la API (wrappers).
      *
-     * @param string $token Token de autenticación para la API
-     * @param string $rut RUT del emisor de ContaFi.
-     * @param string $url Versión de la API.
+     * @param string|null $token Token de autenticación para la API
+     * @param string|null $rut RUT del emisor de ContaFi.
+     * @param string|null $url Versión de la API.
      */
     public function __construct(
         string $token = null,

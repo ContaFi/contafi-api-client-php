@@ -87,7 +87,7 @@ class EmitirBteTest extends TestCase
 
     public static function setUpBeforeClass(): void
     {
-        self::$verbose = env('TEST_VERBOSE', false);
+        self::$verbose = env(varname: 'TEST_VERBOSE', default: false);
         self::$client = new Bte();
         self::$emisorRut = env('CONTAFI_CONTRIBUYENTE_RUT', '');
         self::$datosBte['Encabezado']['IdDoc']['FchEmis'] = date('Y-m-d');
@@ -101,18 +101,21 @@ class EmitirBteTest extends TestCase
      * o si ocurre un error de conexión.
      * @return void
      */
-    public function testEmitirBte()
+    public function testEmitirBte(): void
     {
         try {
-            $response = self::$client->emitirBte(self::$datosBte);
+            $response = self::$client->emitir(self::$datosBte);
 
             $this->assertSame(200, $response->getStatusCode());
 
             if (self::$verbose) {
-                echo "\n",'testEmitirBte() BTE: ',$response->getBody()->getContents(),"\n";
+                echo "\n",
+                'testEmitirBte() BTE: ',
+                $response->getBody()->getContents(),
+                "\n";
             }
         } catch (ApiException $e) {
-            throw new ApiException(sprintf(
+            throw new ApiException(message: sprintf(
                 '[ApiException %d] %s',
                 $e->getCode(),
                 $e->getMessage()

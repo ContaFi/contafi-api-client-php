@@ -41,7 +41,7 @@ if (file_exists(__DIR__ . '/test.env')) {
  * @param string $varname Variable que se desea consultar
  * @param mixed $default Valor por defecto de la variable
  */
-function env($varname, $default = null)
+function env(string $varname, mixed $default = null)
 {
     if (isset($_ENV[$varname])) {
         return $_ENV[$varname];

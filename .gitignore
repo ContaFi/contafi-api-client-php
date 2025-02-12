@@ -2,6 +2,8 @@ vendor/
 test.env
 .phpunit.result.cache
 Dockerfile
+.vscode/
+**/.DS_Store
 
 var/
 tools/

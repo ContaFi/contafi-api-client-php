@@ -48,7 +48,7 @@ class AgregarUsuarioTest extends TestCase
 
     public static function setUpBeforeClass(): void
     {
-        self::$verbose = env('TEST_VERBOSE', false);
+        self::$verbose = env(varname: 'TEST_VERBOSE', default: false);
         self::$client = new Contribuyentes();
     }
 
@@ -60,10 +60,13 @@ class AgregarUsuarioTest extends TestCase
      * búsqueda falla, o si ocurre un error de conexión.
      * @return void
      */
-    public function testAgregarUsuario()
+    public function testAgregarUsuario(): void
     {
         $data = [
-            "usuario_username" => "esteban",
+            "usuario_username" => env(
+                varname: 'TEST_USUARIO_AUT',
+                default: 'esteban'
+            ),
             "rol_id" => 1,
         ];
         try {
@@ -72,10 +75,13 @@ class AgregarUsuarioTest extends TestCase
             $this->assertSame(200, $response->getStatusCode());
 
             if (self::$verbose) {
-                echo "\n",'testAgregarUsuario() Usuario: ',$response->getBody()->getContents(),"\n";
+                echo "\n",
+                'testAgregarUsuario() Usuario: ',
+                $response->getBody()->getContents(),
+                "\n";
             }
         } catch (ApiException $e) {
-            throw new ApiException(sprintf(
+            throw new ApiException(message: sprintf(
                 '[ApiException %d] %s',
                 $e->getCode(),
                 $e->getMessage()

@@ -48,7 +48,7 @@ class ListarDocumentosComprasTest extends TestCase
 
     public static function setUpBeforeClass(): void
     {
-        self::$verbose = env('TEST_VERBOSE', false);
+        self::$verbose = env(varname: 'TEST_VERBOSE', default: false);
         self::$client = new Facturacion();
     }
 
@@ -60,28 +60,33 @@ class ListarDocumentosComprasTest extends TestCase
      * ocurre un error de conexión.
      * @return void
      */
-    public function testListarDocumentosCompras()
+    public function testListarDocumentosCompras(): void
     {
         $estados = [1, 2, 3, 4];
 
         $filtros = [
-            'periodo' => date('Ym'),
+            'periodo' => env(varname: 'TEST_PERIODO', default: date('Ym')),
         ];
         try {
             foreach ($estados as $estado) {
-                $response = self::$client->listadoCompras($estado, $filtros);
+                $response = self::$client->listadoCompras(
+                    $estado,
+                    $filtros
+                );
 
                 $this->assertSame(200, $response->getStatusCode());
 
                 if (self::$verbose) {
-                    echo "\n",sprintf(
-                        'testListarDocumentosCompras() Documentos (estado=%d): ',
+                    echo "\n",
+                    sprintf(
+                        'testListarDocumentosCompras() Documentos(est=%d): ',
                         $estado
-                    ),$response->getBody()->getContents(),"\n";
+                    ),$response->getBody()->getContents(),
+                    "\n";
                 }
             }
         } catch (ApiException $e) {
-            throw new ApiException(sprintf(
+            throw new ApiException(message: sprintf(
                 '[ApiException %d] %s',
                 $e->getCode(),
                 $e->getMessage()

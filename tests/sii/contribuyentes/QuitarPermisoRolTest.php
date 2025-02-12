@@ -48,7 +48,7 @@ class QuitarPermisoRolTest extends TestCase
 
     public static function setUpBeforeClass(): void
     {
-        self::$verbose = env('TEST_VERBOSE', false);
+        self::$verbose = env(varname: 'TEST_VERBOSE', default: false);
         self::$client = new Contribuyentes();
     }
 
@@ -60,22 +60,34 @@ class QuitarPermisoRolTest extends TestCase
      * búsqueda falla, o si ocurre un error de conexión.
      * @return void
      */
-    public function testQuitarPermisoRol()
+    public function testQuitarPermisoRol(): void
     {
         try {
             $response = self::$client->obtenerRoles();
-            $rolId = json_decode($response->getBody()->getContents(), true)[0]['id'];
+            $rolId = (int)env(
+                varname: 'TEST_ROL_ID',
+                default: json_decode(
+                    json: $response->getBody()->getContents(),
+                    associative: true
+                )[0]['id']
+            );
             $permiso = 'bhe_ver';
 
-            $response = self::$client->quitarPermisoRol($rolId, $permiso);
+            $response = self::$client->quitarPermisoRol(
+                $rolId,
+                $permiso
+            );
 
             $this->assertSame(200, $response->getStatusCode());
 
             if (self::$verbose) {
-                echo "\n",'testQuitarPermisoRol() Rol: ',$response->getBody()->getContents(),"\n";
+                echo "\n",
+                'testQuitarPermisoRol() Rol: ',
+                $response->getBody()->getContents(),
+                "\n";
             }
         } catch (ApiException $e) {
-            throw new ApiException(sprintf(
+            throw new ApiException(message: sprintf(
                 '[ApiException %d] %s',
                 $e->getCode(),
                 $e->getMessage()

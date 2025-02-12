@@ -24,36 +24,40 @@ declare(strict_types=1);
 namespace contafi\api_client\client;
 
 use contafi\api_client\ApiBase;
+use Psr\Http\Message\ResponseInterface;
 
 /**
- * Módulo que permite gestionar contribuyentes en ContaFi, junto con los roles y permisos disponibles.
+ * Módulo que permite gestionar contribuyentes en ContaFi, junto con los
+ * roles y permisos disponibles.
  */
 class Contribuyentes extends ApiBase
 {
     /**
-     * Módulo que permite gestionar contribuyentes en ContaFi, junto con los roles y permisos disponibles.
+     * Módulo que permite gestionar contribuyentes en ContaFi, junto con los
+     * roles y permisos disponibles.
      *
-     * @param string $token Token de autenticación del usuario. Si no se
+     * @param string|null $token Token de autenticación del usuario. Si no se
      * proporciona, se intentará obtener de una variable de entorno.
-     * @param string $rut RUT del emisor de ContaFi. Si no se proporciona,
+     * @param string|null $rut RUT del emisor de ContaFi. Si no se proporciona,
      * se intentará obtener de una variable de entorno.
-     * @param string $url URL base de la API. Si no se proporciona, se
+     * @param string|null $url URL base de la API. Si no se proporciona, se
      * usará una URL por defecto.
      */
     public function __construct(
-        string $token = null,
-        string $rut = null,
-        string $url = null
+        string|null $token = null,
+        string|null $rut = null,
+        string|null $url = null
     ) {
         parent::__construct($token, $rut, $url);
     }
 
     /**
-     * Recurso que permite obtener la estadística de un contribuyente a partir de su RUT.
+     * Recurso que permite obtener la estadística de un contribuyente a
+     * partir de su RUT.
      *
      * @return \Psr\Http\Message\ResponseInterface Respuesta con las estadísticas.
      */
-    public function estadisticasContribuyente()
+    public function estadisticas(): ResponseInterface
     {
         $url = '/contribuyentes/estadisticas';
 
@@ -63,12 +67,14 @@ class Contribuyentes extends ApiBase
     }
 
     /**
-     * Recurso que permite obtener los datos de un contribuyente a partir de su RUT.
+     * Recurso que permite obtener los datos de un contribuyente a
+     * partir de su RUT.
      *
      * @param string $rut RUT del contribuyente a consultar, sin puntos y con DV.
-     * @return \Psr\Http\Message\ResponseInterface Respuesta con los datos del contribuyente.
+     * @return \Psr\Http\Message\ResponseInterface Respuesta con los
+     * datos del contribuyente.
      */
-    public function datosContribuyente(string $rut)
+    public function datos(string $rut): ResponseInterface
     {
         $url = sprintf('/contribuyentes/%s', $rut);
 
@@ -78,12 +84,14 @@ class Contribuyentes extends ApiBase
     }
 
     /**
-     * Recurso que permite obtener los datos de una sucursal de un contribuyente a partir de su código.
+     * Recurso que permite obtener los datos de una sucursal de un
+     * contribuyente a partir de su código.
      *
      * @param int $sucursal ID de la sucursal a consultar.
-     * @return \Psr\Http\Message\ResponseInterface Respuesta con los datos de la sucursal.
+     * @return \Psr\Http\Message\ResponseInterface Respuesta con los
+     * datos de la sucursal.
      */
-    public function sucursalContribuyente(int $sucursal)
+    public function sucursal(int $sucursal): ResponseInterface
     {
         $url = sprintf('/contribuyentes/sucursales/%d', $sucursal);
 
@@ -99,7 +107,7 @@ class Contribuyentes extends ApiBase
      * @return \Psr\Http\Message\ResponseInterface Respuesta con la información
      * del usuario autorizado.
      */
-    public function agregarUsuarioAutorizado(array $body)
+    public function agregarUsuarioAutorizado(array $body): ResponseInterface
     {
         $url = '/contribuyentes/usuarios';
 
@@ -113,9 +121,10 @@ class Contribuyentes extends ApiBase
      *
      * @param string $usuario Nombre del usuario a remover.
      * @param int $rol Rol del usuario.
-     * @return \Psr\Http\Message\ResponseInterface Respuesta con la información del usuario removido.
+     * @return \Psr\Http\Message\ResponseInterface Respuesta con la
+     * información del usuario removido.
      */
-    public function quitarUsuarioAutorizado(string $usuario, int $rol)
+    public function quitarUsuarioAutorizado(string $usuario, int $rol): ResponseInterface
     {
         $url = sprintf(
             '/contribuyentes/usuarios/%s/%d',
@@ -131,9 +140,10 @@ class Contribuyentes extends ApiBase
     /**
      * Recurso que entrega los roles de un contribuyente.
      *
-     * @return \Psr\Http\Message\ResponseInterface Respuesta con el detalle de cada rol.
+     * @return \Psr\Http\Message\ResponseInterface Respuesta con el
+     * detalle de cada rol.
      */
-    public function obtenerRoles()
+    public function obtenerRoles(): ResponseInterface
     {
         $url = '/contribuyentes/roles';
 
@@ -148,7 +158,7 @@ class Contribuyentes extends ApiBase
      * @param array $body Datos que incluyen el rol a modificar y sus permisos.
      * @return \Psr\Http\Message\ResponseInterface Respuesta con el rol modificado.
      */
-    public function agregarPermisoRol(array $body)
+    public function agregarPermisoRol(array $body): ResponseInterface
     {
         $url = '/contribuyentes/roles';
 
@@ -164,7 +174,7 @@ class Contribuyentes extends ApiBase
      * @param string $permiso Permiso que se desea remover
      * @return \Psr\Http\Message\ResponseInterface Respuesta con el rol modificado.
      */
-    public function quitarPermisoRol(int $idRol, string $permiso)
+    public function quitarPermisoRol(int $idRol, string $permiso): ResponseInterface
     {
         $url = sprintf('/contribuyentes/roles/%d/%s', $idRol, $permiso);
 

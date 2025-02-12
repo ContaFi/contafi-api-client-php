@@ -48,7 +48,7 @@ class ObtenerRolesTest extends TestCase
 
     public static function setUpBeforeClass(): void
     {
-        self::$verbose = env('TEST_VERBOSE', false);
+        self::$verbose = env(varname: 'TEST_VERBOSE', default: false);
         self::$client = new Contribuyentes();
     }
 
@@ -60,7 +60,7 @@ class ObtenerRolesTest extends TestCase
      * búsqueda falla, o si ocurre un error de conexión.
      * @return void
      */
-    public function testObtenerRoles()
+    public function testObtenerRoles(): void
     {
         try {
             $response = self::$client->obtenerRoles();
@@ -68,10 +68,13 @@ class ObtenerRolesTest extends TestCase
             $this->assertSame(200, $response->getStatusCode());
 
             if (self::$verbose) {
-                echo "\n",'testObtenerRoles() Roles: ',$response->getBody()->getContents(),"\n";
+                echo "\n",
+                'testObtenerRoles() Roles: ',
+                $response->getBody()->getContents(),
+                "\n";
             }
         } catch (ApiException $e) {
-            throw new ApiException(sprintf(
+            throw new ApiException(message: sprintf(
                 '[ApiException %d] %s',
                 $e->getCode(),
                 $e->getMessage()

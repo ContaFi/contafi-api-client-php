@@ -24,6 +24,7 @@ declare(strict_types=1);
 namespace contafi\api_client\client;
 
 use contafi\api_client\ApiBase;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * Módulo que permite manejar y listar los movimientos de dinero efectuados.
@@ -33,17 +34,17 @@ class IngresosEgresos extends ApiBase
     /**
      * Módulo que permite manejar y listar los movimientos de dinero efectuados.
      *
-     * @param string $token Token de autenticación del usuario. Si no se
+     * @param string|null $token Token de autenticación del usuario. Si no se
      * proporciona, se intentará obtener de una variable de entorno.
-     * @param string $rut RUT del emisor de ContaFi. Si no se proporciona,
+     * @param string|null $rut RUT del emisor de ContaFi. Si no se proporciona,
      * se intentará obtener de una variable de entorno.
-     * @param string $url URL base de la API. Si no se proporciona, se
+     * @param string|null $url URL base de la API. Si no se proporciona, se
      * usará una URL por defecto.
      */
     public function __construct(
-        string $token = null,
-        string $rut = null,
-        string $url = null
+        string|null $token = null,
+        string|null $rut = null,
+        string|null $url = null
     ) {
         parent::__construct($token, $rut, $url);
     }
@@ -56,7 +57,7 @@ class IngresosEgresos extends ApiBase
      * @return \Psr\Http\Message\ResponseInterface Respuesta con el listado
      * de movimientos efectuados y recibidos.
      */
-    public function listadoMovimientos(string $periodo)
+    public function listado(string $periodo): ResponseInterface
     {
         $url = sprintf('/movimientos?periodo=%s', $periodo);
 

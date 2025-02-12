@@ -46,10 +46,18 @@ class ObtenerPdfBteEmitidaTest extends TestCase
      */
     protected static $client;
 
+    /**
+     * Número de BTE
+     *
+     * @var int|null
+     */
+    protected static $testNumero;
+
     public static function setUpBeforeClass(): void
     {
-        self::$verbose = env('TEST_VERBOSE', false);
+        self::$verbose = env(varname: 'TEST_VERBOSE', default: false);
         self::$client = new Bte();
+        self::$testNumero = (int)env('TEST_NRO_BTE', null);
     }
 
     /**
@@ -60,18 +68,22 @@ class ObtenerPdfBteEmitidaTest extends TestCase
      * búsqueda falla, o si ocurre un error de conexión.
      * @return void
      */
-    public function testObtenerPdfBteEmitida()
+    public function testObtenerPdfBteEmitida(): void
     {
         $filtros = [
-            'periodo' => date('Ym'),
+            'periodo' => env(varname: 'TEST_PERIODO', default: date('Ym')),
         ];
         try {
-            $listadoBtes = self::$client->listadoBtes($filtros);
-            $numero = json_decode(
-                $listadoBtes->getBody()->getContents(),
-                true
-            )['results'][0]['numero'];
-            $response = self::$client->pdfBte($numero);
+            if (!isset(self::$testNumero)) {
+                $listadoBtes = self::$client->listado(filtros: $filtros);
+                $bodyDecoded = json_decode(
+                    json: $listadoBtes->getBody()->getContents(),
+                    associative: true
+                )['results'][0];
+
+                self::$testNumero = $bodyDecoded['numero'];
+            }
+            $response = self::$client->pdf(numero: self::$testNumero);
 
             $this->assertSame(200, $response->getStatusCode());
 
@@ -80,27 +92,36 @@ class ObtenerPdfBteEmitidaTest extends TestCase
             $currentDir = __DIR__;
 
             // Nueva ruta relativa para guardar el archivo PDF en "tests/archivos"
-            $targetDir = dirname(dirname($currentDir)) . '/archivos/bte_emitidas_pdf';
+            $targetDir = dirname(
+                dirname($currentDir)
+            ) . '/archivos/bte_emitidas_pdf';
 
             // Define el nombre del archivo PDF en el nuevo directorio
             $filename = $targetDir . '/' . sprintf(
                 'CONTAFI_BTE_%d.pdf',
-                $numero
+                self::$testNumero
             );
 
             // Verifica si el directorio existe, si no, créalo
             if (!is_dir($targetDir)) {
-                mkdir($targetDir, 0777, true);
+                mkdir(
+                    directory: $targetDir,
+                    permissions: 0777,
+                    recursive: true
+                );
             }
 
             // Se genera el archivo PDF.
             file_put_contents($filename, $response->getBody());
 
             if (self::$verbose) {
-                echo "\n",'testObtenerPdfBteEmitida() Archivo: ',$filename,"\n";
+                echo "\n",
+                'testObtenerPdfBteEmitida() Archivo: ',
+                $filename,
+                "\n";
             }
         } catch (ApiException $e) {
-            throw new ApiException(sprintf(
+            throw new ApiException(message: sprintf(
                 '[ApiException %d] %s',
                 $e->getCode(),
                 $e->getMessage()

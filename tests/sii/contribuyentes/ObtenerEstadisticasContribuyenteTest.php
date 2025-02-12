@@ -48,7 +48,7 @@ class ObtenerEstadisticasContribuyenteTest extends TestCase
 
     public static function setUpBeforeClass(): void
     {
-        self::$verbose = env('TEST_VERBOSE', false);
+        self::$verbose = env(varname: 'TEST_VERBOSE', default: false);
         self::$client = new Contribuyentes();
     }
 
@@ -60,18 +60,21 @@ class ObtenerEstadisticasContribuyenteTest extends TestCase
      * o si ocurre un error de conexión.
      * @return void
      */
-    public function testObtenerEstadisticasContribuyente()
+    public function testObtenerEstadisticasContribuyente(): void
     {
         try {
-            $response = self::$client->estadisticasContribuyente();
+            $response = self::$client->estadisticas();
 
             $this->assertSame(200, $response->getStatusCode());
 
             if (self::$verbose) {
-                echo "\n",'testObtenerEstadisticasContribuyente() Contribuyente: ',$response->getBody(),"\n";
+                echo "\n",
+                'testObtenerEstadisticasContribuyente() Contribuyente: ',
+                $response->getBody(),
+                "\n";
             }
         } catch (ApiException $e) {
-            throw new ApiException(sprintf(
+            throw new ApiException(message: sprintf(
                 '[ApiException %d] %s',
                 $e->getCode(),
                 $e->getMessage()

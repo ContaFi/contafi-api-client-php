@@ -47,10 +47,28 @@ class ObtenerPdfBheRecibidaTest extends TestCase
      */
     protected static $client;
 
+    /**
+     * Variable de pruebas de número de BHE.
+     *
+     * @var int|null
+     */
+    protected static $testNumero;
+
+    /**
+     * RUT del emisor de la BHE observada. Sin puntos y con DV.
+     *
+     * Ejemplo: 12345678-9
+     *
+     * @var string
+     */
+    protected static $testEmisor;
+
     public static function setUpBeforeClass(): void
     {
-        self::$verbose = env('TEST_VERBOSE', false);
+        self::$verbose = env(varname: 'TEST_VERBOSE', default: false);
         self::$client = new Bhe();
+        self::$testNumero = (int)env('TEST_NRO_BHE', null);
+        self::$testEmisor = env('TEST_EMISOR', '');
     }
 
     /**
@@ -60,23 +78,34 @@ class ObtenerPdfBheRecibidaTest extends TestCase
      * búsqueda falla, o si ocurre un error de conexión.
      * @return void
      */
-    public function testObtenerPdfBheRecibida()
+    public function testObtenerPdfBheRecibida(): void
     {
         $filtros = [
-            'periodo' => date('Ym'),
+            'periodo' => env(varname: 'TEST_PERIODO', default: date('Ym')),
         ];
         try {
-            $listadoBhes = self::$client->listadoBhes($filtros);
-            $emisor = json_decode(
-                $listadoBhes->getBody()->getContents(),
-                true
-            )['results'][0]['emisor'];
-            $numero = json_decode(
-                $listadoBhes->getBody()->getContents(),
-                true
-            )['results'][0]['numero'];
+            if (!isset(self::$testNumero) and self::$testEmisor != '') {
+                $listadoBhes = self::$client->listado($filtros);
+                $bodyDecoded = json_decode(
+                    $listadoBhes->getBody()->getContents(),
+                    true
+                )['results'][0];
 
-            $response = self::$client->pdfBhe($emisor, $numero);
+                $emisorRut = $bodyDecoded['emisor']['contribuyente']['rut'];
+                $emisorDv = $bodyDecoded['emisor']['contribuyente']['dv'];
+                self::$testNumero = $bodyDecoded['numero'];
+
+                self::$testEmisor = sprintf(
+                    '%s-%s',
+                    $emisorRut,
+                    $emisorDv
+                );
+            }
+
+            $response = self::$client->pdf(
+                emisor: self::$testEmisor,
+                numero: self::$testNumero
+            );
 
             $this->assertSame(200, $response->getStatusCode());
 
@@ -85,18 +114,19 @@ class ObtenerPdfBheRecibidaTest extends TestCase
             $currentDir = __DIR__;
 
             // Nueva ruta relativa para guardar el archivo PDF en "tests/archivos"
-            $targetDir = dirname(dirname($currentDir)) . '/archivos/bhe_emitidas_pdf';
+            $targetDir = dirname(dirname($currentDir)) .
+            '/archivos/bhe_emitidas_pdf';
 
             // Define el nombre del archivo PDF en el nuevo directorio
             $filename = $targetDir . '/' . sprintf(
                 'CONTAFI_%s_%d.pdf',
-                $emisor,
-                $numero
+                self::$testEmisor,
+                self::$testNumero
             );
 
             // Verifica si el directorio existe, si no, créalo
             if (!is_dir($targetDir)) {
-                mkdir($targetDir, 0777, true);
+                mkdir(directory: $targetDir, permissions: 0777, recursive: true);
             }
 
             // Se genera el archivo PDF.
@@ -106,7 +136,7 @@ class ObtenerPdfBheRecibidaTest extends TestCase
                 echo "\n",'testObtenerPdfBheRecibida() PDF: ',$filename,"\n";
             }
         } catch (ApiException $e) {
-            throw new ApiException(sprintf(
+            throw new ApiException(message: sprintf(
                 '[ApiException %d] %s',
                 $e->getCode(),
                 $e->getMessage()

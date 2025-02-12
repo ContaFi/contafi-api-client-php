@@ -24,6 +24,7 @@ declare(strict_types=1);
 namespace contafi\api_client\client;
 
 use contafi\api_client\ApiBase;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * Módulo que permite gestionar las BHE registradas y/o sincronizadas en ContaFi.
@@ -31,30 +32,33 @@ use contafi\api_client\ApiBase;
 class Bhe extends ApiBase
 {
     /**
-     * Módulo que permite gestionar las BHE registradas y/o sincronizadas en ContaFi.
+     * Módulo que permite gestionar las BHE registradas y/o
+     * sincronizadas en ContaFi.
      *
-     * @param string $token Token de autenticación del usuario. Si no se
+     * @param string|null $token Token de autenticación del usuario. Si no se
      * proporciona, se intentará obtener de una variable de entorno.
-     * @param string $rut RUT del emisor de ContaFi. Si no se proporciona,
+     * @param string|null $rut RUT del emisor de ContaFi. Si no se proporciona,
      * se intentará obtener de una variable de entorno.
-     * @param string $url URL base de la API. Si no se proporciona, se
+     * @param string|null $url URL base de la API. Si no se proporciona, se
      * usará una URL por defecto.
      */
     public function __construct(
-        string $token = null,
-        string $rut = null,
-        string $url = null
+        string|null $token = null,
+        string|null $rut = null,
+        string|null $url = null
     ) {
         parent::__construct($token, $rut, $url);
     }
 
     /**
-     * Recurso que permite obtener el listado paginado de boletas de honorarios electrónicas recibidas.
+     * Recurso que permite obtener el listado paginado de boletas de honorarios
+     * electrónicas recibidas.
      *
      * @param array $filtros Filtros de búsqueda.
-     * @return \Psr\Http\Message\ResponseInterface Respuesta con el listado de BHEs recibidas.
+     * @return \Psr\Http\Message\ResponseInterface Respuesta con el listado de
+     * BHEs recibidas.
      */
-    public function listadoBhes(array $filtros)
+    public function listado(array $filtros): ResponseInterface
     {
         $url = '/bhe/boletas';
 
@@ -69,13 +73,15 @@ class Bhe extends ApiBase
     }
 
     /**
-     * Recurso para obtener los datos de una boleta de honorarios electrónica recibida.
+     * Recurso para obtener los datos de una boleta de honorarios
+     * electrónica recibida.
      *
      * @param string $emisor RUT del emisor de la BHE, sin puntos y con DV.
      * @param int $numero Número de la BHE.
-     * @return \Psr\Http\Message\ResponseInterface Respuesta con los datos de la BHE consultada.
+     * @return \Psr\Http\Message\ResponseInterface Respuesta con los datos de
+     * la BHE consultada.
      */
-    public function datosBhe(string $emisor, int $numero)
+    public function datos(string $emisor, int $numero): ResponseInterface
     {
         $url = sprintf('/bhe/boletas/%s/%d', $emisor, $numero);
 
@@ -85,16 +91,20 @@ class Bhe extends ApiBase
     }
 
     /**
-     * Recurso para obtener el PDF de una boleta de honorarios electrónica recibida.
+     * Recurso para obtener el PDF de una boleta de honorarios
+     * electrónica recibida.
      *
      * @param string $emisor RUT del emisor de la BHE, sin puntos y con DV.
      * @param int $numero Número de la BHE.
      * @param array $filtros Filtros adicionales.
-     * @return \Psr\Http\Message\ResponseInterface Respuesta con los datos del PDF
-     * de la BHE consultada.
+     * @return \Psr\Http\Message\ResponseInterface Respuesta con los datos
+     * del PDF de la BHE consultada.
      */
-    public function pdfBhe(string $emisor, int $numero, array $filtros = [])
-    {
+    public function pdf(
+        string $emisor,
+        int $numero,
+        array $filtros = []
+    ): ResponseInterface {
         $url = sprintf('/bhe/pdf/%s/%d', $emisor, $numero);
 
         if (count($filtros) > 0) {
@@ -108,15 +118,20 @@ class Bhe extends ApiBase
     }
 
     /**
-     * Recurso que permite observar una boleta de honorarios electrónica previamente recibida.
+     * Recurso que permite observar una boleta de honorarios electrónica
+     * previamente recibida.
      *
      * @param string $emisor RUT del emisor de la BHE, sin puntos y con DV.
      * @param int $numero Número de la BHE.
      * @param array $body Datos de la observación de la BHE (causa).
-     * @return \Psr\Http\Message\ResponseInterface Respuesta con la BHE observada
+     * @return \Psr\Http\Message\ResponseInterface Respuesta con la BHE
+     * observada
      */
-    public function observarBhe(string $emisor, int $numero, array $body)
-    {
+    public function observar(
+        string $emisor,
+        int $numero,
+        array $body
+    ): ResponseInterface {
         $url = sprintf('/bhe/observar/%s/%d', $emisor, $numero);
 
         $response = $this->post($url, $body);
@@ -125,13 +140,15 @@ class Bhe extends ApiBase
     }
 
     /**
-     * Recurso que permite obtener el listado paginado de emisores asociados a las BHE.
+     * Recurso que permite obtener el listado paginado de emisores asociados
+     * a las BHE.
      *
      * @param string $nuevos Emisores que ha emitido por primera vez una
      * BHE en el período indicado
-     * @return \Psr\Http\Message\ResponseInterface Respuesta con el listado de emisores.
+     * @return \Psr\Http\Message\ResponseInterface Respuesta con el listado
+     * de emisores.
      */
-    public function listarEmisores(string $nuevos)
+    public function listarEmisores(string $nuevos): ResponseInterface
     {
         $url = sprintf('/bhe/emisores?nuevos=%s', $nuevos);
 

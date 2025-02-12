@@ -46,10 +46,18 @@ class AnularBteTest extends TestCase
      */
     protected static $client;
 
+    /**
+     * Número de la BTE por anular.
+     *
+     * @var int|null
+     */
+    protected static $testNumero;
+
     public static function setUpBeforeClass(): void
     {
-        self::$verbose = env('TEST_VERBOSE', false);
+        self::$verbose = env(varname: 'TEST_VERBOSE', default: false);
         self::$client = new Bte();
+        self::$testNumero = env('TEST_NRO_BTE', null);
     }
 
     /**
@@ -59,29 +67,37 @@ class AnularBteTest extends TestCase
      * búsqueda falla, o si ocurre un error de conexión.
      * @return void
      */
-    public function testAnularBte()
+    public function testAnularBte(): void
     {
-        $filtros = [
-            'periodo' => date('Ym'),
-        ];
         $data = [
             'causa' => 3,
         ];
+        $filtros = [
+            'periodo' => env(varname: 'TEST_PERIODO', default: date('Ym')),
+        ];
         try {
-            $listadoBtes = self::$client->listadoBtes($filtros);
-            $numero = json_decode(
-                $listadoBtes->getBody()->getContents(),
-                true
-            )['results'][0]['numero'];
-            $response = self::$client->anularBte($numero, $data);
+            if (!isset(self::$testNumero)) {
+
+                $listadoBtes = self::$client->listado(filtros: $filtros);
+                $bodyDecoded = json_decode(
+                    json: $listadoBtes->getBody()->getContents(),
+                    associative: true
+                )['results'][0];
+
+                self::$testNumero = $bodyDecoded['numero'];
+            }
+            $response = self::$client->anular(self::$testNumero, $data);
 
             $this->assertSame(200, $response->getStatusCode());
 
             if (self::$verbose) {
-                echo "\n",'testAnularBte() BTE: ',$response->getBody()->getContents(),"\n";
+                echo "\n",
+                'testAnularBte() BTE: ',
+                $response->getBody()->getContents(),
+                "\n";
             }
         } catch (ApiException $e) {
-            throw new ApiException(sprintf(
+            throw new ApiException(message: sprintf(
                 '[ApiException %d] %s',
                 $e->getCode(),
                 $e->getMessage()

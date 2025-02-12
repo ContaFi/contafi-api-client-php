@@ -23,6 +23,8 @@ declare(strict_types=1);
 
 namespace contafi\api_client;
 
+use Psr\Http\Message\ResponseInterface;
+
 /**
  * Cliente de la API de ContaFi
  * @author Santiago Fiol Stephens, SantiagoFiol (santiago[at]sasco.cl)
@@ -35,49 +37,49 @@ class ApiClient
      *
      * @var string
      */
-    private $api_url = 'https://contafi.cl';
+    private string $apiUrl = 'https://contafi.cl';
 
     /**
      * El prefijo para las rutas de la API.
      *
      * @var string
      */
-    private $api_prefix = '/api';
+    private string $apiPrefix = '/api';
 
     /**
      * La versión de la API a utilizar.
      *
      * @var string
      */
-    private $api_version = '/v1';
+    private string $apiVersion = '/v1';
 
     /**
      * El token de autenticación para la API.
      *
      * @var string|null
      */
-    private $api_token = null;
+    private string|null $apiToken = null;
 
     /**
      * El RUT de contribuyente.
      *
      * @var string|null
      */
-    private $rut_emisor = null;
+    private string|null $rutContribuyente = null;
 
     /**
      * La última URL utilizada en la solicitud HTTP.
      *
      * @var string|null
      */
-    private $last_url = null;
+    private string|null $lastUrl = null;
 
     /**
      * La última respuesta recibida de la API.
      *
      * @var \Psr\Http\Message\ResponseInterface|null
      */
-    private $last_response = null;
+    private ResponseInterface|null $lastResponse = null;
 
     /**
      * Constructor del cliente de la API.
@@ -91,18 +93,18 @@ class ApiClient
         string $rut = null,
         string $url = null
     ) {
-        $this->api_token = $token ?: $this->env('CONTAFI_API_TOKEN');
-        if (!$this->api_token) {
+        $this->apiToken = $token ?: $this->env('CONTAFI_API_TOKEN');
+        if (!$this->apiToken) {
             throw new ApiException('CONTAFI_API_TOKEN missing');
         }
-        $this->rut_emisor = $rut ?: $this->env('CONTAFI_CONTRIBUYENTE_RUT');
-        if (!$this->rut_emisor) {
+        $this->rutContribuyente = $rut ?: $this->env('CONTAFI_CONTRIBUYENTE_RUT');
+        if (!$this->rutContribuyente) {
             throw new ApiException('CONTAFI_CONTRIBUYENTE_RUT missing');
         }
 
-        $this->api_url = $url ?: $this->env(
+        $this->apiUrl = $url ?: $this->env(
             'CONTAFI_API_URL'
-        ) ?: $this->api_url;
+        ) ?: $this->apiUrl;
     }
 
     /**
@@ -111,9 +113,9 @@ class ApiClient
      * @param string $url URL base.
      * @return $this
      */
-    public function setUrl(string $url)
+    public function setUrl(string $url): static
     {
-        $this->api_url = $url;
+        $this->apiUrl = $url;
         return $this;
     }
 
@@ -123,9 +125,9 @@ class ApiClient
      * @param string $token Token de autenticación.
      * @return $this
      */
-    public function setToken(string $token)
+    public function setToken(string $token): static
     {
-        $this->api_token = $token;
+        $this->apiToken = $token;
         return $this;
     }
 
@@ -135,9 +137,9 @@ class ApiClient
      * @param string $rut RUT del contribuyente.
      * @return $this
      */
-    public function setRut(string $rut)
+    public function setRut(string $rut): static
     {
-        $this->rut_emisor = $rut;
+        $this->rutContribuyente = $rut;
         return $this;
     }
 
@@ -146,9 +148,9 @@ class ApiClient
      *
      * @return string|null
      */
-    public function getLastUrl()
+    public function getLastUrl(): string
     {
-        return $this->last_url;
+        return $this->lastUrl;
     }
 
     /**
@@ -156,9 +158,9 @@ class ApiClient
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function getLastResponse()
+    public function getLastResponse(): ResponseInterface
     {
-        return $this->last_response;
+        return $this->lastResponse;
     }
 
     /**
@@ -170,15 +172,15 @@ class ApiClient
      * @return string El cuerpo de la respuesta HTTP.
      * @throws ApiException Si no hay respuesta previa o el cuerpo no se puede obtener.
      */
-    public function getBody()
+    public function getBody(): string
     {
-        if (!$this->last_response) {
+        if (!$this->lastResponse) {
             throw new ApiException(
                 'No hay una respuesta HTTP previa para obtener el cuerpo.'
             );
         }
 
-        return (string)$this->last_response->getBody();
+        return (string)$this->lastResponse->getBody();
     }
 
     /**
@@ -191,7 +193,7 @@ class ApiClient
      * @return array El cuerpo de la respuesta HTTP decodificado como un arreglo.
      * @throws ApiException Si no hay respuesta previa o el cuerpo no se puede decodificar.
      */
-    public function getBodyDecoded()
+    public function getBodyDecoded(): mixed
     {
         $decodedBody = json_decode($this->getBody(), true);
 
@@ -208,82 +210,18 @@ class ApiClient
     }
 
     /**
-     * Convierte la última respuesta HTTP en un arreglo asociativo.
-     *
-     * Este método transforma la última respuesta HTTP recibida en un arreglo
-     * asociativo, que incluye información del estado HTTP, encabezados y el
-     * cuerpo de la respuesta, ya sea en formato de texto o decodificado de JSON.
-     *
-     * @return array Arreglo asociativo con la información de la respuesta.
-     * @throws ApiException Si se encuentra un error en el proceso.
-     */
-    public function toArray()
-    {
-        if (!$this->last_response) {
-            throw new ApiException(
-                'No hay una respuesta HTTP previa para procesar.'
-            );
-        }
-
-        $headers = $this->getLastResponse()->getHeaders();
-
-        foreach ($headers as &$header) {
-            $header = isset($header[1]) ? $header : $header[0];
-        }
-
-        $statusCode = $this->getLastResponse()->getStatusCode();
-        $contentType = $this->getLastResponse()->getHeader('content-type')[0];
-
-        // Procesar el cuerpo de la respuesta según el tipo de contenido
-        if ($contentType == 'application/json') {
-            $body = $this->getBodyDecoded();
-            if ($body === null) {
-                $body = $this->getBody();
-                $body = $body ?: $this->getError()->message;
-            }
-        } else {
-            $body = $this->getBody();
-            $body = $body ?: $this->getError()->message;
-        }
-
-        // Manejar respuestas con error
-        if ($statusCode != 200) {
-            if (!empty($body['message'])) {
-                $body = $body['message'];
-            } elseif (!empty($body['exception'])) {
-                $body = $this->getError()->message;
-            } else {
-                $body = sprintf(
-                    'Error no determinado: %s',
-                    json_encode($body)
-                );
-            }
-        }
-
-        return [
-            'status' => [
-                'protocol' => $this->getLastResponse()->getProtocolVersion(),
-                'code' => $statusCode,
-                'message' => $this->getLastResponse()->getReasonPhrase(),
-            ],
-            'header' => $headers,
-            'body' => $body,
-        ];
-    }
-
-    /**
      * Realiza una solicitud GET a la API.
      *
      * @param string $resource Recurso de la API al cual realizar la solicitud.
      * @param array $headers Encabezados adicionales para incluir en la solicitud.
      * @param array $options Arreglo con las opciones de la solicitud HTTP.
-     * @return \Psr\Http\Message\ResponseInterface|null
+     * @return \Psr\Http\Message\ResponseInterface
      */
     public function get(
         string $resource,
         array $headers = [],
         array $options = []
-    ) {
+    ): ResponseInterface {
         return $this->consume(
             $resource,
             [],
@@ -300,14 +238,14 @@ class ApiClient
      * @param array $data Datos a enviar en la solicitud.
      * @param array $headers Encabezados adicionales para incluir en la solicitud.
      * @param array $options Arreglo con las opciones de la solicitud HTTP.
-     * @return \Psr\Http\Message\ResponseInterface|null
+     * @return \Psr\Http\Message\ResponseInterface
      */
     public function post(
         string $resource,
         array $data,
         array $headers = [],
         array $options = []
-    ) {
+    ): ResponseInterface {
         return $this->consume(
             $resource,
             $data,
@@ -324,14 +262,14 @@ class ApiClient
      * @param array $data Datos a enviar en la solicitud.
      * @param array $headers Encabezados adicionales para incluir en la solicitud.
      * @param array $options Arreglo con las opciones de la solicitud HTTP.
-     * @return \Psr\Http\Message\ResponseInterface|null
+     * @return \Psr\Http\Message\ResponseInterface
      */
     public function put(
         string $resource,
         array $data,
         array $headers = [],
         array $options = []
-    ) {
+    ): ResponseInterface {
         return $this->consume(
             $resource,
             $data,
@@ -347,13 +285,13 @@ class ApiClient
      * @param string $resource Recurso de la API al cual realizar la solicitud.
      * @param array $headers Encabezados adicionales para incluir en la solicitud.
      * @param array $options Arreglo con las opciones de la solicitud HTTP.
-     * @return \Psr\Http\Message\ResponseInterface|null
+     * @return \Psr\Http\Message\ResponseInterface
      */
     public function delete(
         string $resource,
         array $headers = [],
         array $options = []
-    ) {
+    ): ResponseInterface {
         return $this->consume(
             $resource,
             [],
@@ -381,33 +319,33 @@ class ApiClient
         string $resource,
         array $data = [],
         array $headers = [],
-        string $method = null,
+        string|null $method = null,
         array $options = []
-    ) {
-        $this->last_response = null;
-        if (!$this->api_token) {
+    ): static {
+        $this->lastResponse = null;
+        if (!$this->apiToken) {
             throw new ApiException(
                 'Falta especificar token para autenticación.',
                 400
             );
         }
-        if (!$this->rut_emisor) {
+        if (!$this->rutContribuyente) {
             throw new ApiException(
                 'Falta especificar RUT del contribuyente.',
                 400
-            )
-            ; # NUEVA CONDICIONAL
+            );
         }
         $method = $method ?: ($data ? 'POST' : 'GET');
         $client = new \GuzzleHttp\Client();
-        $this->last_url = $this->api_url.$this->api_prefix.$this->api_version.$resource;
+        $this->lastUrl = $this->apiUrl.$this
+        ->apiPrefix.$this->apiVersion.$resource;
 
         // preparar cabeceras que se usarán
         $options[\GuzzleHttp\RequestOptions::HEADERS] = array_merge([
-            'Authorization' => sprintf('Token %s', $this->api_token),
+            'Authorization' => sprintf('Token %s', $this->apiToken),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json',
-            'X-Contafi-Contribuyente' => $this->rut_emisor, # NUEVA LINEA
+            'X-Contafi-Contribuyente' => $this->rutContribuyente, # NUEVA LINEA
         ], $headers);
 
         // agregar datos de la consulta si se pasaron (POST o PUT)
@@ -417,13 +355,13 @@ class ApiClient
 
         // realizar consulta HTTP
         try {
-            $this->last_response = $client->request(
+            $this->lastResponse = $client->request(
                 $method,
-                $this->last_url,
+                $this->lastUrl,
                 $options
             );
         } catch (\GuzzleHttp\Exception\GuzzleException $e) {
-            $this->last_response = $e->getResponse();
+            $this->lastResponse = $e->getResponse();
             $this->throwException();
         }
         if ($this->getLastResponse()->getStatusCode() != 200) {
@@ -441,16 +379,19 @@ class ApiClient
      *
      * @return object Detalles del error con propiedades 'code' y 'message'.
      */
-    private function getError()
+    private function getError(): object
     {
         $data = $this->getBodyDecoded();
         $response = $this->getLastResponse();
         $statusCode = $response ? $response->getStatusCode() : null;
-        $reasonPhrase = $response ? $response->getReasonPhrase() : 'Sin respuesta';
+        $reasonPhrase = $response ? $response
+        ->getReasonPhrase() : 'Sin respuesta';
 
         if ($data) {
             $code = isset($data['code']) ? $data['code'] : $statusCode;
-            $message = isset($data['message']) ? $data['message'] : $reasonPhrase;
+            $message = isset(
+                $data['message']
+            ) ? $data['message'] : $reasonPhrase;
         } else {
             $code = $statusCode;
             $message = $reasonPhrase;
@@ -481,7 +422,7 @@ class ApiClient
      *
      * @throws ApiException Lanza una excepción con detalles del error.
      */
-    private function throwException()
+    private function throwException(): ApiException
     {
         $error = $this->getError();
         throw new ApiException($error->message, $error->code);
@@ -493,7 +434,7 @@ class ApiClient
      * @param string $name Nombre de la variable de entorno.
      * @return string|null Valor de la variable de entorno o null si no está definida.
      */
-    private function env(string $name)
+    private function env(string $name): mixed
     {
         return function_exists('env') ? env($name) : getenv($name);
     }

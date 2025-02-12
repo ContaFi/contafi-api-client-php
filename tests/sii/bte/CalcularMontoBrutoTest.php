@@ -48,7 +48,7 @@ class CalcularMontoBrutoTest extends TestCase
 
     public static function setUpBeforeClass(): void
     {
-        self::$verbose = env('TEST_VERBOSE', false);
+        self::$verbose = env(varname: 'TEST_VERBOSE', default: false);
         self::$client = new Bte();
     }
 
@@ -60,20 +60,26 @@ class CalcularMontoBrutoTest extends TestCase
      * si ocurre un error de conexión.
      * @return void
      */
-    public function testCalcularMontoBruto()
+    public function testCalcularMontoBruto(): void
     {
         $liquido = 10000;
-        $periodo = '202501';
+        $periodo = env(varname: 'TEST_PERIODO', default: date('Ym'));
         try {
-            $response = self::$client->CalcularMontoBruto($liquido, $periodo);
+            $response = self::$client->CalcularMontoBruto(
+                $liquido,
+                $periodo
+            );
 
             $this->assertSame(200, $response->getStatusCode());
 
             if (self::$verbose) {
-                echo "\n",'testCalcularMontoBruto() Bruto: ',$response->getBody()->getContents(),"\n";
+                echo "\n",
+                'testCalcularMontoBruto() Bruto: ',
+                $response->getBody()->getContents(),
+                "\n";
             }
         } catch (ApiException $e) {
-            throw new ApiException(sprintf(
+            throw new ApiException(message: sprintf(
                 '[ApiException %d] %s',
                 $e->getCode(),
                 $e->getMessage()

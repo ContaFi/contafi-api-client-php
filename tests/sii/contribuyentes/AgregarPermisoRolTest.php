@@ -49,7 +49,7 @@ class AgregarPermisoRolTest extends TestCase
 
     public static function setUpBeforeClass(): void
     {
-        self::$verbose = env('TEST_VERBOSE', false);
+        self::$verbose = env(varname: 'TEST_VERBOSE', default: false);
         self::$client = new Contribuyentes();
     }
 
@@ -61,11 +61,17 @@ class AgregarPermisoRolTest extends TestCase
      * si la búsqueda falla, o si ocurre un error de conexión.
      * @return void
      */
-    public function testAgregarPermisoRol()
+    public function testAgregarPermisoRol(): void
     {
         try {
             $response = self::$client->obtenerRoles();
-            $rolId = json_decode($response->getBody()->getContents(), true)[0]['id'];
+            $rolId = (int)env(
+                varname: 'TEST_ROL_ID',
+                default: json_decode(
+                    json: $response->getBody()->getContents(),
+                    associative: true
+                )[0]['id']
+            );
 
             $data = [
                 "rol_id" => $rolId,
@@ -76,10 +82,13 @@ class AgregarPermisoRolTest extends TestCase
             $this->assertSame(200, $response->getStatusCode());
 
             if (self::$verbose) {
-                echo "\n",'testAgregarPermisoRol() Rol: ',$response->getBody()->getContents(),"\n";
+                echo "\n",
+                'testAgregarPermisoRol() Rol: ',
+                $response->getBody()->getContents(),
+                "\n";
             }
         } catch (ApiException $e) {
-            throw new ApiException(sprintf(
+            throw new ApiException(message: sprintf(
                 '[ApiException %d] %s',
                 $e->getCode(),
                 $e->getMessage()

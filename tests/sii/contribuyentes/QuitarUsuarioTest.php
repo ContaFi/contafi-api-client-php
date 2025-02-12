@@ -49,7 +49,7 @@ class QuitarUsuarioTest extends TestCase
 
     public static function setUpBeforeClass(): void
     {
-        self::$verbose = env('TEST_VERBOSE', false);
+        self::$verbose = env(varname: 'TEST_VERBOSE', default: false);
         self::$client = new Contribuyentes();
     }
 
@@ -61,22 +61,28 @@ class QuitarUsuarioTest extends TestCase
      * si la búsqueda falla, o si ocurre un error de conexión.
      * @return void
      */
-    public function testQuitarUsuario()
+    public function testQuitarUsuario(): void
     {
         // Modificar de ser necesario
-        $usuario = 'esteban';
+        $usuario = env(varname: 'TEST_USUARIO_AUT', default: 'esteban');
         $rol = 1;
 
         try {
-            $response = self::$client->quitarUsuarioAutorizado($usuario, $rol);
+            $response = self::$client->quitarUsuarioAutorizado(
+                $usuario,
+                $rol
+            );
 
             $this->assertSame(200, $response->getStatusCode());
 
             if (self::$verbose) {
-                echo "\n",'testQuitarUsuario() Usuario: ',$response->getBody()->getContents(),"\n";
+                echo "\n",
+                'testQuitarUsuario() Usuario: ',
+                $response->getBody()->getContents(),
+                "\n";
             }
         } catch (ApiException $e) {
-            throw new ApiException(sprintf(
+            throw new ApiException(message: sprintf(
                 '[ApiException %d] %s',
                 $e->getCode(),
                 $e->getMessage()

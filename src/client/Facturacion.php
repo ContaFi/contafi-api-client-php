@@ -24,6 +24,7 @@ declare(strict_types=1);
 namespace contafi\api_client\client;
 
 use contafi\api_client\ApiBase;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * Módulo que permite gestionar proveeedores, compras y ventas con facturación (DTE).
@@ -31,19 +32,20 @@ use contafi\api_client\ApiBase;
 class Facturacion extends ApiBase
 {
     /**
-     * Módulo que permite gestionar proveeedores, compras y ventas con facturación (DTE).
+     * Módulo que permite gestionar proveeedores, compras y ventas con
+     * facturación (DTE).
      *
-     * @param string $token Token de autenticación del usuario. Si no se
+     * @param string|null $token Token de autenticación del usuario. Si no se
      * proporciona, se intentará obtener de una variable de entorno.
-     * @param string $rut RUT del emisor de ContaFi. Si no se proporciona,
+     * @param string|null $rut RUT del emisor de ContaFi. Si no se proporciona,
      * se intentará obtener de una variable de entorno.
-     * @param string $url URL base de la API. Si no se proporciona, se
+     * @param string|null $url URL base de la API. Si no se proporciona, se
      * usará una URL por defecto.
      */
     public function __construct(
-        string $token = null,
-        string $rut = null,
-        string $url = null
+        string|null $token = null,
+        string|null $rut = null,
+        string|null $url = null
     ) {
         parent::__construct($token, $rut, $url);
     }
@@ -52,9 +54,10 @@ class Facturacion extends ApiBase
      * Recurso que permite obtener el listado paginado de resumenes asociados a ventas.
      *
      * @param string $periodo Periodo donde obtener el listado de resumen de ventas.
-     * @return \Psr\Http\Message\ResponseInterface Respuesta con el listado paginado de ventas.
+     * @return \Psr\Http\Message\ResponseInterface Respuesta con el listado
+     * paginado de ventas.
      */
-    public function resumenVentasSinDetalle(string $periodo)
+    public function resumenVentasSinDetalle(string $periodo): ResponseInterface
     {
         $url = sprintf('/dte/ventas/resumen?periodo=%s', $periodo);
 
@@ -71,7 +74,7 @@ class Facturacion extends ApiBase
      * @return \Psr\Http\Message\ResponseInterface Respuesta con el listado
      * paginado de DTEs de ventas, con detalle.
      */
-    public function listadoVentas(array $filtros = [])
+    public function listadoVentas(array $filtros = []): ResponseInterface
     {
         $url = '/dte/ventas';
 
@@ -86,14 +89,15 @@ class Facturacion extends ApiBase
     }
 
     /**
-     * Recurso que permite obtener el listado paginado de documentos tributarios electrónicos asociados a compras.
+     * Recurso que permite obtener el listado paginado de documentos
+     * tributarios electrónicos asociados a compras.
      *
      * @param int $estado Estado del documento en el registro de compras.
      * @param array $filtros Filtros de búsqueda.
      * @return \Psr\Http\Message\ResponseInterface Respuesta con el listado
      * paginado de DTEs de compras, con detalle.
      */
-    public function listadoCompras(int $estado, array $filtros)
+    public function listadoCompras(int $estado, array $filtros): ResponseInterface
     {
         $url = sprintf('/dte/compras?estado=%d', $estado);
 
@@ -108,12 +112,13 @@ class Facturacion extends ApiBase
     }
 
     /**
-     * Recurso que permite obtener el listado paginado de clientes asociados a ventas.
+     * Recurso que permite obtener el listado paginado de clientes
+     * asociados a ventas.
      *
      * @return \Psr\Http\Message\ResponseInterface Respuesta con el listado
      * de clientes de ventas.
      */
-    public function listadoClientes()
+    public function listadoClientes(): ResponseInterface
     {
         $url = '/dte/clientes';
 
@@ -123,12 +128,13 @@ class Facturacion extends ApiBase
     }
 
     /**
-     * Recurso que permite obtener el listado paginado de proveedores asociados a compras.
+     * Recurso que permite obtener el listado paginado de proveedores
+     * asociados a compras.
      *
      * @return \Psr\Http\Message\ResponseInterface Respuesta con el listado
      * de proveedores de compras.
      */
-    public function listadoProveedores()
+    public function listadoProveedores(): ResponseInterface
     {
         $url = '/dte/proveedores';
 

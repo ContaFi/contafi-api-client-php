@@ -24,6 +24,7 @@ declare(strict_types=1);
 namespace contafi\api_client\client;
 
 use contafi\api_client\ApiBase;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * Módulo que permite gestionar las BTE registradas y/o sincronizadas en ContaFi.
@@ -31,19 +32,20 @@ use contafi\api_client\ApiBase;
 class Bte extends ApiBase
 {
     /**
-     * Módulo que permite gestionar las BHE registradas y/o sincronizadas en ContaFi.
+     * Módulo que permite gestionar las BTE registradas y/o sincronizadas
+     * en ContaFi.
      *
-     * @param string $token Token de autenticación del usuario. Si no se
+     * @param string|null $token Token de autenticación del usuario. Si no se
      * proporciona, se intentará obtener de una variable de entorno.
-     * @param string $rut RUT del emisor de ContaFi. Si no se proporciona,
+     * @param string|null $rut RUT del emisor de ContaFi. Si no se proporciona,
      * se intentará obtener de una variable de entorno.
-     * @param string $url URL base de la API. Si no se proporciona, se
+     * @param string|null $url URL base de la API. Si no se proporciona, se
      * usará una URL por defecto.
      */
     public function __construct(
-        string $token = null,
-        string $rut = null,
-        string $url = null
+        string|null $token = null,
+        string|null $rut = null,
+        string|null $url = null
     ) {
         parent::__construct($token, $rut, $url);
     }
@@ -54,7 +56,7 @@ class Bte extends ApiBase
      * @param array $body Datos de la BTE a emitir.
      * @return \Psr\Http\Message\ResponseInterface Respuesta con la BTE emitida.
      */
-    public function emitirBte(array $body)
+    public function emitir(array $body): ResponseInterface
     {
         $url = '/bte/emitir';
 
@@ -71,7 +73,7 @@ class Bte extends ApiBase
      * @return \Psr\Http\Message\ResponseInterface Respuesta con el listado
      * de BTEs emitidas.
      */
-    public function listadoBtes(array $filtros = [])
+    public function listado(array $filtros = []): ResponseInterface
     {
         $url = '/bte/boletas';
 
@@ -91,7 +93,7 @@ class Bte extends ApiBase
      * @param int $numero Número de la BTE a consultar.
      * @return \Psr\Http\Message\ResponseInterface Respuesta con los datos de la BTE.
      */
-    public function datosBte(int $numero)
+    public function datos(int $numero): ResponseInterface
     {
         $url = sprintf('/bte/boletas/%d', $numero);
 
@@ -107,7 +109,7 @@ class Bte extends ApiBase
      * @return \Psr\Http\Message\ResponseInterface Respuesta con el contenido
      * de la BTE en formato HTML.
      */
-    public function htmlBte(int $numero)
+    public function html(int $numero): ResponseInterface
     {
         $url = sprintf('/bte/html/%d', $numero);
 
@@ -124,7 +126,7 @@ class Bte extends ApiBase
      * @return \Psr\Http\Message\ResponseInterface Respuesta con el contenido
      * de la BTE en formato PDF.
      */
-    public function pdfBte(int $numero, array $filtros = [])
+    public function pdf(int $numero, array $filtros = []): ResponseInterface
     {
         $url = sprintf('/bte/pdf/%d', $numero);
 
@@ -145,7 +147,7 @@ class Bte extends ApiBase
      * @param array $body Datos a entregar (causa de anulación).
      * @return \Psr\Http\Message\ResponseInterface Respuesta con la BTE anulada.
      */
-    public function anularBte(int $numero, array $body)
+    public function anular(int $numero, array $body): ResponseInterface
     {
         $url = sprintf('/bte/anular/%d', $numero);
 
@@ -159,10 +161,13 @@ class Bte extends ApiBase
      *
      * @param int $bruto Monto bruto a convertir.
      * @param string $periodo Periodo a considerar para la conversión.
-     * @return \Psr\Http\Message\ResponseInterface Respuesta con el valor líquido calculado.
+     * @return \Psr\Http\Message\ResponseInterface Respuesta con el valor
+     * líquido calculado.
      */
-    public function calcularMontoLiquido(int $bruto, string $periodo)
-    {
+    public function calcularMontoLiquido(
+        int $bruto,
+        string $periodo
+    ): ResponseInterface {
         $url = sprintf('/bte/liquido/%d/%s', $bruto, $periodo);
 
         $response = $this->get($url);
@@ -175,10 +180,13 @@ class Bte extends ApiBase
      *
      * @param int $liquido Monto líquido a convertir.
      * @param string $periodo Periodo a considerar para la conversión.
-     * @return \Psr\Http\Message\ResponseInterface Respuesta con el valor bruto calculado.
+     * @return \Psr\Http\Message\ResponseInterface Respuesta con el valor
+     * bruto calculado.
      */
-    public function calcularMontoBruto(int $liquido, string $periodo)
-    {
+    public function calcularMontoBruto(
+        int $liquido,
+        string $periodo
+    ): ResponseInterface {
         $url = sprintf('/bte/bruto/%d/%s', $liquido, $periodo);
 
         $response = $this->get($url);
@@ -187,12 +195,13 @@ class Bte extends ApiBase
     }
 
     /**
-     * Recurso que permite obtener el listado paginado de receptores asociados a las BTE.
+     * Recurso que permite obtener el listado paginado de receptores
+     * asociados a las BTE.
      *
      * @return \Psr\Http\Message\ResponseInterface Listado con los receptores
      * asociados a las BTE.
      */
-    public function listarReceptores()
+    public function listarReceptores(): ResponseInterface
     {
         $url = '/bte/receptores';
 

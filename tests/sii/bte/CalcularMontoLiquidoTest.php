@@ -44,11 +44,11 @@ class CalcularMontoLiquidoTest extends TestCase
      *
      * @var Bte
      */
-    protected static $client;
+    protected static Bte $client;
 
     public static function setUpBeforeClass(): void
     {
-        self::$verbose = env('TEST_VERBOSE', false);
+        self::$verbose = env(varname: 'TEST_VERBOSE', default: false);
         self::$client = new Bte();
     }
 
@@ -60,20 +60,26 @@ class CalcularMontoLiquidoTest extends TestCase
      * si ocurre un error de conexión.
      * @return void
      */
-    public function testCalcularMontoLiquido()
+    public function testCalcularMontoLiquido(): void
     {
         $bruto = 10000;
-        $periodo = '202501';
+        $periodo = env(varname: 'TEST_PERIODO', default: date('Ym'));
         try {
-            $response = self::$client->calcularMontoLiquido($bruto, $periodo);
+            $response = self::$client->calcularMontoLiquido(
+                $bruto,
+                $periodo
+            );
 
             $this->assertSame(200, $response->getStatusCode());
 
             if (self::$verbose) {
-                echo "\n",'testCalcularMontoLiquido() Líquido: ',$response->getBody()->getContents(),"\n";
+                echo "\n",
+                'testCalcularMontoLiquido() Líquido: ',
+                $response->getBody()->getContents(),
+                "\n";
             }
         } catch (ApiException $e) {
-            throw new ApiException(sprintf(
+            throw new ApiException(message: sprintf(
                 '[ApiException %d] %s',
                 $e->getCode(),
                 $e->getMessage()

@@ -54,11 +54,19 @@ class ObtenerSucursalContribuyenteTest extends TestCase
      */
     protected static $emisorRut;
 
+    /**
+     * ID de la sucursal del contribuyente.
+     *
+     * @var int|null
+     */
+    protected static $sucursal;
+
     public static function setUpBeforeClass(): void
     {
-        self::$verbose = env('TEST_VERBOSE', false);
+        self::$verbose = env(varname: 'TEST_VERBOSE', default: false);
         self::$client = new Contribuyentes();
         self::$emisorRut = env('CONTAFI_CONTRIBUYENTE_RUT', '76192083-9');
+        self::$sucursal = (int)env('TEST_COD_SUCURSAL', null);
     }
 
     /**
@@ -69,22 +77,30 @@ class ObtenerSucursalContribuyenteTest extends TestCase
      * la sucursal no existe, si la búsqueda falla, o si ocurre un error de conexión.
      * @return void
      */
-    public function testObtenerSucursalContribuyente()
+    public function testObtenerSucursalContribuyente(): void
     {
         try {
-            $datos = self::$client->datosContribuyente(self::$emisorRut);
-            $datosDec = json_decode($datos->getBody()->getContents(), true);
-            $idSucursal = $datosDec['sucursales'][0]['codigo'];
+            if (!isset(self::$sucursal)) {
+                $datos = self::$client->datos(self::$emisorRut);
+                $datosDec = json_decode(
+                    json: $datos->getBody()->getContents(),
+                    associative: true
+                );
+                self::$sucursal = $datosDec['sucursales'][0]['codigo'];
+            }
 
-            $response = self::$client->sucursalContribuyente($idSucursal);
+            $response = self::$client->sucursal(self::$sucursal);
 
             $this->assertSame(200, $response->getStatusCode());
 
             if (self::$verbose) {
-                echo "\n",'testObtenerSucursalContribuyente() Sucursal: ',$response->getBody()->getContents(),"\n";
+                echo "\n",
+                'testObtenerSucursalContribuyente() Sucursal: ',
+                $response->getBody()->getContents(),
+                "\n";
             }
         } catch (ApiException $e) {
-            throw new ApiException(sprintf(
+            throw new ApiException(message: sprintf(
                 '[ApiException %d] %s',
                 $e->getCode(),
                 $e->getMessage()

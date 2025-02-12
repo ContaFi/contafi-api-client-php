@@ -55,7 +55,7 @@ class ObtenerDatosContribuyenteTest extends TestCase
 
     public static function setUpBeforeClass(): void
     {
-        self::$verbose = env('TEST_VERBOSE', false);
+        self::$verbose = env(varname: 'TEST_VERBOSE', default: false);
         self::$client = new Contribuyentes();
         self::$contribuyenteRut = env('CONTAFI_CONTRIBUYENTE_RUT', '76192083-9');
     }
@@ -67,18 +67,21 @@ class ObtenerDatosContribuyenteTest extends TestCase
      * búsqueda falla, o si ocurre un error de conexión.
      * @return void
      */
-    public function testObtenerDatosContribuyente()
+    public function testObtenerDatosContribuyente(): void
     {
         try {
-            $response = self::$client->datosContribuyente(self::$contribuyenteRut);
+            $response = self::$client->datos(self::$contribuyenteRut);
 
             $this->assertSame(200, $response->getStatusCode());
 
             if (self::$verbose) {
-                echo "\n",'testObtenerDatosContribuyente() Datos: ',$response->getBody(),"\n";
+                echo "\n",
+                'testObtenerDatosContribuyente() Datos: ',
+                $response->getBody(),
+                "\n";
             }
         } catch (ApiException $e) {
-            throw new ApiException(sprintf(
+            throw new ApiException(message: sprintf(
                 '[ApiException %d] %s',
                 $e->getCode(),
                 $e->getMessage()

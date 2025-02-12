@@ -48,7 +48,7 @@ class ListarBhesRecibidasTest extends TestCase
 
     public static function setUpBeforeClass(): void
     {
-        self::$verbose = env('TEST_VERBOSE', false);
+        self::$verbose = env(varname: 'TEST_VERBOSE', default: false);
         self::$client = new Bhe();
     }
 
@@ -59,21 +59,24 @@ class ListarBhesRecibidasTest extends TestCase
      * si ocurre un error de conexión.
      * @return void
      */
-    public function testListarBhesRecibidas()
+    public function testListarBhesRecibidas(): void
     {
         $filtros = [
-            'periodo' => date('Ym'),
+            'periodo' => env(varname: 'TEST_PERIODO', default: date('Ym')),
         ];
         try {
-            $response = self::$client->listadoBhes($filtros);
+            $response = self::$client->listado($filtros);
 
             $this->assertSame(200, $response->getStatusCode());
 
             if (self::$verbose) {
-                echo "\n",'testListarBhesRecibidas() BHEs: ',$response->getBody()->getContents(),"\n";
+                echo "\n",
+                'testListarBhesRecibidas() BHEs: ',
+                $response->getBody()->getContents(),
+                "\n";
             }
         } catch (ApiException $e) {
-            throw new ApiException(sprintf(
+            throw new ApiException(message: sprintf(
                 '[ApiException %d] %s',
                 $e->getCode(),
                 $e->getMessage()
