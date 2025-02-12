@@ -165,7 +165,7 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/client/Bte.php"><a href="files/src-client-bte.html"><abbr title="src/client/Bte.php">Bte.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">31</span>
+    <span class="phpdocumentor-element-found-in__line">32</span>
 
     </aside>
 
@@ -200,49 +200,49 @@
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
-    <a class="" href="classes/contafi-api-client-ApiClient.html#property_api_prefix">$api_prefix</a>
+    <a class="" href="classes/contafi-api-client-ApiClient.html#property_apiPrefix">$apiPrefix</a>
     <span>
                         &nbsp;: string            </span>
 </dt>
 <dd>El prefijo para las rutas de la API.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
-    <a class="" href="classes/contafi-api-client-ApiClient.html#property_api_token">$api_token</a>
+    <a class="" href="classes/contafi-api-client-ApiClient.html#property_apiToken">$apiToken</a>
     <span>
                         &nbsp;: string|null            </span>
 </dt>
 <dd>El token de autenticación para la API.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
-    <a class="" href="classes/contafi-api-client-ApiClient.html#property_api_url">$api_url</a>
+    <a class="" href="classes/contafi-api-client-ApiClient.html#property_apiUrl">$apiUrl</a>
     <span>
                         &nbsp;: string            </span>
 </dt>
 <dd>La URL base de la API de ContaFi.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
-    <a class="" href="classes/contafi-api-client-ApiClient.html#property_api_version">$api_version</a>
+    <a class="" href="classes/contafi-api-client-ApiClient.html#property_apiVersion">$apiVersion</a>
     <span>
                         &nbsp;: string            </span>
 </dt>
 <dd>La versión de la API a utilizar.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
-    <a class="" href="classes/contafi-api-client-ApiClient.html#property_last_response">$last_response</a>
+    <a class="" href="classes/contafi-api-client-ApiClient.html#property_lastResponse">$lastResponse</a>
     <span>
                         &nbsp;: <abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>|null            </span>
 </dt>
 <dd>La última respuesta recibida de la API.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
-    <a class="" href="classes/contafi-api-client-ApiClient.html#property_last_url">$last_url</a>
+    <a class="" href="classes/contafi-api-client-ApiClient.html#property_lastUrl">$lastUrl</a>
     <span>
                         &nbsp;: string|null            </span>
 </dt>
 <dd>La última URL utilizada en la solicitud HTTP.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
-    <a class="" href="classes/contafi-api-client-ApiClient.html#property_rut_emisor">$rut_emisor</a>
+    <a class="" href="classes/contafi-api-client-ApiClient.html#property_rutContribuyente">$rutContribuyente</a>
     <span>
                         &nbsp;: string|null            </span>
 </dt>
@@ -261,10 +261,11 @@
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
-<dd>Módulo que permite gestionar las BHE registradas y/o sincronizadas en ContaFi.</dd>
+<dd>Módulo que permite gestionar las BTE registradas y/o sincronizadas
+en ContaFi.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a class="" href="classes/contafi-api-client-client-Bte.html#method_anularBte">anularBte()</a>
+    <a class="" href="classes/contafi-api-client-client-Bte.html#method_anular">anular()</a>
     <span>
                                 &nbsp;: <abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>    </span>
 </dt>
@@ -292,7 +293,7 @@
 <dd>Realiza una solicitud HTTP a la API.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a class="" href="classes/contafi-api-client-client-Bte.html#method_datosBte">datosBte()</a>
+    <a class="" href="classes/contafi-api-client-client-Bte.html#method_datos">datos()</a>
     <span>
                                 &nbsp;: <abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>    </span>
 </dt>
@@ -301,12 +302,12 @@
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/contafi-api-client-ApiClient.html#method_delete">delete()</a>
     <span>
-                                &nbsp;: <abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>|null    </span>
+                                &nbsp;: <abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>    </span>
 </dt>
 <dd>Realiza una solicitud DELETE a la API.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a class="" href="classes/contafi-api-client-client-Bte.html#method_emitirBte">emitirBte()</a>
+    <a class="" href="classes/contafi-api-client-client-Bte.html#method_emitir">emitir()</a>
     <span>
                                 &nbsp;: <abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>    </span>
 </dt>
@@ -315,7 +316,7 @@
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/contafi-api-client-ApiClient.html#method_get">get()</a>
     <span>
-                                &nbsp;: <abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>|null    </span>
+                                &nbsp;: <abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>    </span>
 </dt>
 <dd>Realiza una solicitud GET a la API.</dd>
 
@@ -348,14 +349,14 @@
 <dd>Obtiene la última URL utilizada en la solicitud HTTP.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a class="" href="classes/contafi-api-client-client-Bte.html#method_htmlBte">htmlBte()</a>
+    <a class="" href="classes/contafi-api-client-client-Bte.html#method_html">html()</a>
     <span>
                                 &nbsp;: <abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>    </span>
 </dt>
 <dd>Recurso para obtener el HTML de una boleta de terceros electrónica emitida.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a class="" href="classes/contafi-api-client-client-Bte.html#method_listadoBtes">listadoBtes()</a>
+    <a class="" href="classes/contafi-api-client-client-Bte.html#method_listado">listado()</a>
     <span>
                                 &nbsp;: <abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>    </span>
 </dt>
@@ -367,10 +368,11 @@ electrónicas emitidas.</dd>
     <span>
                                 &nbsp;: <abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>    </span>
 </dt>
-<dd>Recurso que permite obtener el listado paginado de receptores asociados a las BTE.</dd>
+<dd>Recurso que permite obtener el listado paginado de receptores
+asociados a las BTE.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a class="" href="classes/contafi-api-client-client-Bte.html#method_pdfBte">pdfBte()</a>
+    <a class="" href="classes/contafi-api-client-client-Bte.html#method_pdf">pdf()</a>
     <span>
                                 &nbsp;: <abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>    </span>
 </dt>
@@ -379,14 +381,14 @@ electrónicas emitidas.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/contafi-api-client-ApiClient.html#method_post">post()</a>
     <span>
-                                &nbsp;: <abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>|null    </span>
+                                &nbsp;: <abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>    </span>
 </dt>
 <dd>Realiza una solicitud POST a la API.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/contafi-api-client-ApiClient.html#method_put">put()</a>
     <span>
-                                &nbsp;: <abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>|null    </span>
+                                &nbsp;: <abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>    </span>
 </dt>
 <dd>Realiza una solicitud PUT a la API.</dd>
 
@@ -411,13 +413,6 @@ electrónicas emitidas.</dd>
 </dt>
 <dd>Establece la URL base de la API.</dd>
 
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a class="" href="classes/contafi-api-client-ApiClient.html#method_toArray">toArray()</a>
-    <span>
-                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
-</dt>
-<dd>Convierte la última respuesta HTTP en un arreglo asociativo.</dd>
-
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a class="" href="classes/contafi-api-client-ApiClient.html#method_env">env()</a>
     <span>
@@ -435,7 +430,7 @@ electrónicas emitidas.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a class="" href="classes/contafi-api-client-ApiClient.html#method_throwException">throwException()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: <a href="classes/contafi-api-client-ApiException.html"><abbr title="\contafi\api_client\ApiException">ApiException</abbr></a>    </span>
 </dt>
 <dd>Lanza una ApiException con los detalles del último error.</dd>
 
@@ -459,9 +454,9 @@ electrónicas emitidas.</dd>
             -private
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="property_api_prefix">
-        $api_prefix
-        <a href="classes/contafi-api-client-ApiClient.html#property_api_prefix" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_apiPrefix">
+        $apiPrefix
+        <a href="classes/contafi-api-client-ApiClient.html#property_apiPrefix" class="headerlink"><i class="fas fa-link"></i></a>
 
         <span class="phpdocumentor-element__modifiers">
                                 </span>
@@ -469,7 +464,7 @@ electrónicas emitidas.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/ApiClient.php"><a href="files/src-apiclient.html"><abbr title="src/ApiClient.php">ApiClient.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">45</span>
+    <span class="phpdocumentor-element-found-in__line">47</span>
 
     </aside>
 
@@ -479,7 +474,7 @@ electrónicas emitidas.</dd>
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
         <span class="phpdocumentor-signature__type">string</span>
-    <span class="phpdocumentor-signature__name">$api_prefix</span>
+    <span class="phpdocumentor-signature__name">$apiPrefix</span>
      = <span class="phpdocumentor-signature__default-value">&#039;/api&#039;</span></code>
 
     
@@ -496,9 +491,9 @@ electrónicas emitidas.</dd>
             -private
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="property_api_token">
-        $api_token
-        <a href="classes/contafi-api-client-ApiClient.html#property_api_token" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_apiToken">
+        $apiToken
+        <a href="classes/contafi-api-client-ApiClient.html#property_apiToken" class="headerlink"><i class="fas fa-link"></i></a>
 
         <span class="phpdocumentor-element__modifiers">
                                 </span>
@@ -506,7 +501,7 @@ electrónicas emitidas.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/ApiClient.php"><a href="files/src-apiclient.html"><abbr title="src/ApiClient.php">ApiClient.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">59</span>
+    <span class="phpdocumentor-element-found-in__line">61</span>
 
     </aside>
 
@@ -516,7 +511,7 @@ electrónicas emitidas.</dd>
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
         <span class="phpdocumentor-signature__type">string|null</span>
-    <span class="phpdocumentor-signature__name">$api_token</span>
+    <span class="phpdocumentor-signature__name">$apiToken</span>
      = <span class="phpdocumentor-signature__default-value">null</span></code>
 
     
@@ -533,9 +528,9 @@ electrónicas emitidas.</dd>
             -private
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="property_api_url">
-        $api_url
-        <a href="classes/contafi-api-client-ApiClient.html#property_api_url" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_apiUrl">
+        $apiUrl
+        <a href="classes/contafi-api-client-ApiClient.html#property_apiUrl" class="headerlink"><i class="fas fa-link"></i></a>
 
         <span class="phpdocumentor-element__modifiers">
                                 </span>
@@ -543,7 +538,7 @@ electrónicas emitidas.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/ApiClient.php"><a href="files/src-apiclient.html"><abbr title="src/ApiClient.php">ApiClient.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">38</span>
+    <span class="phpdocumentor-element-found-in__line">40</span>
 
     </aside>
 
@@ -553,7 +548,7 @@ electrónicas emitidas.</dd>
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
         <span class="phpdocumentor-signature__type">string</span>
-    <span class="phpdocumentor-signature__name">$api_url</span>
+    <span class="phpdocumentor-signature__name">$apiUrl</span>
      = <span class="phpdocumentor-signature__default-value">&#039;https://contafi.cl&#039;</span></code>
 
     
@@ -570,9 +565,9 @@ electrónicas emitidas.</dd>
             -private
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="property_api_version">
-        $api_version
-        <a href="classes/contafi-api-client-ApiClient.html#property_api_version" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_apiVersion">
+        $apiVersion
+        <a href="classes/contafi-api-client-ApiClient.html#property_apiVersion" class="headerlink"><i class="fas fa-link"></i></a>
 
         <span class="phpdocumentor-element__modifiers">
                                 </span>
@@ -580,7 +575,7 @@ electrónicas emitidas.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/ApiClient.php"><a href="files/src-apiclient.html"><abbr title="src/ApiClient.php">ApiClient.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">52</span>
+    <span class="phpdocumentor-element-found-in__line">54</span>
 
     </aside>
 
@@ -590,7 +585,7 @@ electrónicas emitidas.</dd>
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
         <span class="phpdocumentor-signature__type">string</span>
-    <span class="phpdocumentor-signature__name">$api_version</span>
+    <span class="phpdocumentor-signature__name">$apiVersion</span>
      = <span class="phpdocumentor-signature__default-value">&#039;/v1&#039;</span></code>
 
     
@@ -607,9 +602,9 @@ electrónicas emitidas.</dd>
             -private
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="property_last_response">
-        $last_response
-        <a href="classes/contafi-api-client-ApiClient.html#property_last_response" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_lastResponse">
+        $lastResponse
+        <a href="classes/contafi-api-client-ApiClient.html#property_lastResponse" class="headerlink"><i class="fas fa-link"></i></a>
 
         <span class="phpdocumentor-element__modifiers">
                                 </span>
@@ -617,7 +612,7 @@ electrónicas emitidas.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/ApiClient.php"><a href="files/src-apiclient.html"><abbr title="src/ApiClient.php">ApiClient.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">80</span>
+    <span class="phpdocumentor-element-found-in__line">82</span>
 
     </aside>
 
@@ -627,7 +622,7 @@ electrónicas emitidas.</dd>
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
         <span class="phpdocumentor-signature__type"><abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>|null</span>
-    <span class="phpdocumentor-signature__name">$last_response</span>
+    <span class="phpdocumentor-signature__name">$lastResponse</span>
      = <span class="phpdocumentor-signature__default-value">null</span></code>
 
     
@@ -644,9 +639,9 @@ electrónicas emitidas.</dd>
             -private
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="property_last_url">
-        $last_url
-        <a href="classes/contafi-api-client-ApiClient.html#property_last_url" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_lastUrl">
+        $lastUrl
+        <a href="classes/contafi-api-client-ApiClient.html#property_lastUrl" class="headerlink"><i class="fas fa-link"></i></a>
 
         <span class="phpdocumentor-element__modifiers">
                                 </span>
@@ -654,7 +649,7 @@ electrónicas emitidas.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/ApiClient.php"><a href="files/src-apiclient.html"><abbr title="src/ApiClient.php">ApiClient.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">73</span>
+    <span class="phpdocumentor-element-found-in__line">75</span>
 
     </aside>
 
@@ -664,7 +659,7 @@ electrónicas emitidas.</dd>
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
         <span class="phpdocumentor-signature__type">string|null</span>
-    <span class="phpdocumentor-signature__name">$last_url</span>
+    <span class="phpdocumentor-signature__name">$lastUrl</span>
      = <span class="phpdocumentor-signature__default-value">null</span></code>
 
     
@@ -681,9 +676,9 @@ electrónicas emitidas.</dd>
             -private
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="property_rut_emisor">
-        $rut_emisor
-        <a href="classes/contafi-api-client-ApiClient.html#property_rut_emisor" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_rutContribuyente">
+        $rutContribuyente
+        <a href="classes/contafi-api-client-ApiClient.html#property_rutContribuyente" class="headerlink"><i class="fas fa-link"></i></a>
 
         <span class="phpdocumentor-element__modifiers">
                                 </span>
@@ -691,7 +686,7 @@ electrónicas emitidas.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/ApiClient.php"><a href="files/src-apiclient.html"><abbr title="src/ApiClient.php">ApiClient.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">66</span>
+    <span class="phpdocumentor-element-found-in__line">68</span>
 
     </aside>
 
@@ -701,7 +696,7 @@ electrónicas emitidas.</dd>
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
         <span class="phpdocumentor-signature__type">string|null</span>
-    <span class="phpdocumentor-signature__name">$rut_emisor</span>
+    <span class="phpdocumentor-signature__name">$rutContribuyente</span>
      = <span class="phpdocumentor-signature__default-value">null</span></code>
 
     
@@ -733,15 +728,16 @@ electrónicas emitidas.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/client/Bte.php"><a href="files/src-client-bte.html"><abbr title="src/client/Bte.php">Bte.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">43</span>
+    <span class="phpdocumentor-element-found-in__line">45</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Módulo que permite gestionar las BHE registradas y/o sincronizadas en ContaFi.</p>
+        <p class="phpdocumentor-summary">Módulo que permite gestionar las BTE registradas y/o sincronizadas
+en ContaFi.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$token</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$rut</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$url</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$token</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$rut</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$url</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -751,7 +747,7 @@ electrónicas emitidas.</dd>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$token</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                  = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
                     <section class="phpdocumentor-description"><p>Token de autenticación del usuario. Si no se
@@ -761,7 +757,7 @@ proporciona, se intentará obtener de una variable de entorno.</p>
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$rut</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                  = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
                     <section class="phpdocumentor-description"><p>RUT del emisor de ContaFi. Si no se proporciona,
@@ -771,7 +767,7 @@ se intentará obtener de una variable de entorno.</p>
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$url</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                  = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
                     <section class="phpdocumentor-description"><p>URL base de la API. Si no se proporciona, se
@@ -793,15 +789,15 @@ usará una URL por defecto.</p>
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_anularBte">
-        anularBte()
-        <a href="classes/contafi-api-client-client-Bte.html#method_anularBte" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_anular">
+        anular()
+        <a href="classes/contafi-api-client-client-Bte.html#method_anular" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/client/Bte.php"><a href="files/src-client-bte.html"><abbr title="src/client/Bte.php">Bte.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">148</span>
+    <span class="phpdocumentor-element-found-in__line">150</span>
 
     </aside>
 
@@ -809,7 +805,7 @@ usará una URL por defecto.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">anularBte</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$numero</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$body</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr></span></code>
+                    <span class="phpdocumentor-signature__name">anular</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$numero</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$body</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr></span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -865,7 +861,7 @@ usará una URL por defecto.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/client/Bte.php"><a href="files/src-client-bte.html"><abbr title="src/client/Bte.php">Bte.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">180</span>
+    <span class="phpdocumentor-element-found-in__line">186</span>
 
     </aside>
 
@@ -909,7 +905,8 @@ usará una URL por defecto.</p>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type"><abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr></span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>Respuesta con el valor bruto calculado.</p>
+                <section class="phpdocumentor-description"><p>Respuesta con el valor
+bruto calculado.</p>
 </section>
 
             </section>
@@ -929,7 +926,7 @@ usará una URL por defecto.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/client/Bte.php"><a href="files/src-client-bte.html"><abbr title="src/client/Bte.php">Bte.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">164</span>
+    <span class="phpdocumentor-element-found-in__line">167</span>
 
     </aside>
 
@@ -973,7 +970,8 @@ usará una URL por defecto.</p>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type"><abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr></span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>Respuesta con el valor líquido calculado.</p>
+                <section class="phpdocumentor-description"><p>Respuesta con el valor
+líquido calculado.</p>
 </section>
 
             </section>
@@ -993,7 +991,7 @@ usará una URL por defecto.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/ApiClient.php"><a href="files/src-apiclient.html"><abbr title="src/ApiClient.php">ApiClient.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">380</span>
+    <span class="phpdocumentor-element-found-in__line">318</span>
 
     </aside>
 
@@ -1096,15 +1094,15 @@ los parámetros especificados y manejando la autenticación y la respuesta.</p>
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_datosBte">
-        datosBte()
-        <a href="classes/contafi-api-client-client-Bte.html#method_datosBte" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_datos">
+        datos()
+        <a href="classes/contafi-api-client-client-Bte.html#method_datos" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/client/Bte.php"><a href="files/src-client-bte.html"><abbr title="src/client/Bte.php">Bte.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">94</span>
+    <span class="phpdocumentor-element-found-in__line">96</span>
 
     </aside>
 
@@ -1112,7 +1110,7 @@ los parámetros especificados y manejando la autenticación y la respuesta.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">datosBte</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$numero</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr></span></code>
+                    <span class="phpdocumentor-signature__name">datos</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$numero</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr></span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -1159,7 +1157,7 @@ los parámetros especificados y manejando la autenticación y la respuesta.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/ApiClient.php"><a href="files/src-apiclient.html"><abbr title="src/ApiClient.php">ApiClient.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">352</span>
+    <span class="phpdocumentor-element-found-in__line">290</span>
 
     </aside>
 
@@ -1167,7 +1165,7 @@ los parámetros especificados y manejando la autenticación y la respuesta.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">delete</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$resource</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$headers</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$options</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>|null</span></code>
+                    <span class="phpdocumentor-signature__name">delete</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$resource</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$headers</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$options</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr></span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -1210,7 +1208,7 @@ los parámetros especificados y manejando la autenticación y la respuesta.</p>
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type"><abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>|null</span>
+        <span class="phpdocumentor-signature__response_type"><abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr></span>
             </section>
 
 </article>
@@ -1220,15 +1218,15 @@ los parámetros especificados y manejando la autenticación y la respuesta.</p>
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_emitirBte">
-        emitirBte()
-        <a href="classes/contafi-api-client-client-Bte.html#method_emitirBte" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_emitir">
+        emitir()
+        <a href="classes/contafi-api-client-client-Bte.html#method_emitir" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/client/Bte.php"><a href="files/src-client-bte.html"><abbr title="src/client/Bte.php">Bte.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">57</span>
+    <span class="phpdocumentor-element-found-in__line">59</span>
 
     </aside>
 
@@ -1236,7 +1234,7 @@ los parámetros especificados y manejando la autenticación y la respuesta.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">emitirBte</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$body</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr></span></code>
+                    <span class="phpdocumentor-signature__name">emitir</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$body</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr></span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -1283,7 +1281,7 @@ los parámetros especificados y manejando la autenticación y la respuesta.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/ApiClient.php"><a href="files/src-apiclient.html"><abbr title="src/ApiClient.php">ApiClient.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">282</span>
+    <span class="phpdocumentor-element-found-in__line">220</span>
 
     </aside>
 
@@ -1291,7 +1289,7 @@ los parámetros especificados y manejando la autenticación y la respuesta.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">get</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$resource</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$headers</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$options</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>|null</span></code>
+                    <span class="phpdocumentor-signature__name">get</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$resource</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$headers</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$options</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr></span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -1334,7 +1332,7 @@ los parámetros especificados y manejando la autenticación y la respuesta.</p>
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type"><abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>|null</span>
+        <span class="phpdocumentor-signature__response_type"><abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr></span>
             </section>
 
 </article>
@@ -1352,7 +1350,7 @@ los parámetros especificados y manejando la autenticación y la respuesta.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/ApiClient.php"><a href="files/src-apiclient.html"><abbr title="src/ApiClient.php">ApiClient.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">173</span>
+    <span class="phpdocumentor-element-found-in__line">175</span>
 
     </aside>
 
@@ -1415,7 +1413,7 @@ solicitud HTTP realizada utilizando este cliente API.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/ApiClient.php"><a href="files/src-apiclient.html"><abbr title="src/ApiClient.php">ApiClient.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">194</span>
+    <span class="phpdocumentor-element-found-in__line">196</span>
 
     </aside>
 
@@ -1479,7 +1477,7 @@ formato JSON a un arreglo asociativo de PHP.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/ApiClient.php"><a href="files/src-apiclient.html"><abbr title="src/ApiClient.php">ApiClient.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">159</span>
+    <span class="phpdocumentor-element-found-in__line">161</span>
 
     </aside>
 
@@ -1518,7 +1516,7 @@ formato JSON a un arreglo asociativo de PHP.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/ApiClient.php"><a href="files/src-apiclient.html"><abbr title="src/ApiClient.php">ApiClient.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">149</span>
+    <span class="phpdocumentor-element-found-in__line">151</span>
 
     </aside>
 
@@ -1549,15 +1547,15 @@ formato JSON a un arreglo asociativo de PHP.</p>
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_htmlBte">
-        htmlBte()
-        <a href="classes/contafi-api-client-client-Bte.html#method_htmlBte" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_html">
+        html()
+        <a href="classes/contafi-api-client-client-Bte.html#method_html" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/client/Bte.php"><a href="files/src-client-bte.html"><abbr title="src/client/Bte.php">Bte.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">110</span>
+    <span class="phpdocumentor-element-found-in__line">112</span>
 
     </aside>
 
@@ -1565,7 +1563,7 @@ formato JSON a un arreglo asociativo de PHP.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">htmlBte</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$numero</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr></span></code>
+                    <span class="phpdocumentor-signature__name">html</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$numero</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr></span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -1605,15 +1603,15 @@ de la BTE en formato HTML.</p>
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_listadoBtes">
-        listadoBtes()
-        <a href="classes/contafi-api-client-client-Bte.html#method_listadoBtes" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_listado">
+        listado()
+        <a href="classes/contafi-api-client-client-Bte.html#method_listado" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/client/Bte.php"><a href="files/src-client-bte.html"><abbr title="src/client/Bte.php">Bte.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">74</span>
+    <span class="phpdocumentor-element-found-in__line">76</span>
 
     </aside>
 
@@ -1622,7 +1620,7 @@ electrónicas emitidas.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">listadoBtes</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$filtros</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr></span></code>
+                    <span class="phpdocumentor-signature__name">listado</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$filtros</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr></span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -1670,11 +1668,12 @@ de BTEs emitidas.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/client/Bte.php"><a href="files/src-client-bte.html"><abbr title="src/client/Bte.php">Bte.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">195</span>
+    <span class="phpdocumentor-element-found-in__line">204</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Recurso que permite obtener el listado paginado de receptores asociados a las BTE.</p>
+        <p class="phpdocumentor-summary">Recurso que permite obtener el listado paginado de receptores
+asociados a las BTE.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
@@ -1706,15 +1705,15 @@ asociados a las BTE.</p>
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_pdfBte">
-        pdfBte()
-        <a href="classes/contafi-api-client-client-Bte.html#method_pdfBte" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_pdf">
+        pdf()
+        <a href="classes/contafi-api-client-client-Bte.html#method_pdf" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/client/Bte.php"><a href="files/src-client-bte.html"><abbr title="src/client/Bte.php">Bte.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">127</span>
+    <span class="phpdocumentor-element-found-in__line">129</span>
 
     </aside>
 
@@ -1722,7 +1721,7 @@ asociados a las BTE.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">pdfBte</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$numero</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$filtros</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr></span></code>
+                    <span class="phpdocumentor-signature__name">pdf</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$numero</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$filtros</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr></span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -1779,7 +1778,7 @@ de la BTE en formato PDF.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/ApiClient.php"><a href="files/src-apiclient.html"><abbr title="src/ApiClient.php">ApiClient.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">305</span>
+    <span class="phpdocumentor-element-found-in__line">243</span>
 
     </aside>
 
@@ -1787,7 +1786,7 @@ de la BTE en formato PDF.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">post</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$resource</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$headers</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$options</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>|null</span></code>
+                    <span class="phpdocumentor-signature__name">post</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$resource</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$headers</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$options</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr></span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -1839,7 +1838,7 @@ de la BTE en formato PDF.</p>
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type"><abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>|null</span>
+        <span class="phpdocumentor-signature__response_type"><abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr></span>
             </section>
 
 </article>
@@ -1857,7 +1856,7 @@ de la BTE en formato PDF.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/ApiClient.php"><a href="files/src-apiclient.html"><abbr title="src/ApiClient.php">ApiClient.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">329</span>
+    <span class="phpdocumentor-element-found-in__line">267</span>
 
     </aside>
 
@@ -1865,7 +1864,7 @@ de la BTE en formato PDF.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">put</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$resource</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$headers</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$options</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>|null</span></code>
+                    <span class="phpdocumentor-signature__name">put</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$resource</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$headers</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$options</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr></span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -1917,7 +1916,7 @@ de la BTE en formato PDF.</p>
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type"><abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>|null</span>
+        <span class="phpdocumentor-signature__response_type"><abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr></span>
             </section>
 
 </article>
@@ -1935,7 +1934,7 @@ de la BTE en formato PDF.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/ApiClient.php"><a href="files/src-apiclient.html"><abbr title="src/ApiClient.php">ApiClient.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">138</span>
+    <span class="phpdocumentor-element-found-in__line">140</span>
 
     </aside>
 
@@ -1986,7 +1985,7 @@ de la BTE en formato PDF.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/ApiClient.php"><a href="files/src-apiclient.html"><abbr title="src/ApiClient.php">ApiClient.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">126</span>
+    <span class="phpdocumentor-element-found-in__line">128</span>
 
     </aside>
 
@@ -2037,7 +2036,7 @@ de la BTE en formato PDF.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/ApiClient.php"><a href="files/src-apiclient.html"><abbr title="src/ApiClient.php">ApiClient.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">114</span>
+    <span class="phpdocumentor-element-found-in__line">116</span>
 
     </aside>
 
@@ -2077,70 +2076,6 @@ de la BTE en formato PDF.</p>
                     <article
         class="phpdocumentor-element
             -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_toArray">
-        toArray()
-        <a href="classes/contafi-api-client-ApiClient.html#method_toArray" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/ApiClient.php"><a href="files/src-apiclient.html"><abbr title="src/ApiClient.php">ApiClient.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">220</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Convierte la última respuesta HTTP en un arreglo asociativo.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">toArray</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-        <section class="phpdocumentor-description"><p>Este método transforma la última respuesta HTTP recibida en un arreglo
-asociativo, que incluye información del estado HTTP, encabezados y el
-cuerpo de la respuesta, ya sea en formato de texto o decodificado de JSON.</p>
-</section>
-
-    
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/contafi-api-client-ApiClient.html#method_toArray#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">throws</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                <span class="phpdocumentor-tag-link"><a href="classes/contafi-api-client-ApiException.html"><abbr title="\contafi\api_client\ApiException">ApiException</abbr></a></span>
-                                                            
-                                                 <section class="phpdocumentor-description"><p>Si se encuentra un error en el proceso.</p>
-</section>
-
-                                    </dd>
-                                            </dl>
-
-    
-
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
-                    &mdash;
-                <section class="phpdocumentor-description"><p>Arreglo asociativo con la información de la respuesta.</p>
-</section>
-
-            </section>
-
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
             -private
                                                         "
 >
@@ -2152,7 +2087,7 @@ cuerpo de la respuesta, ya sea en formato de texto o decodificado de JSON.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/ApiClient.php"><a href="files/src-apiclient.html"><abbr title="src/ApiClient.php">ApiClient.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">496</span>
+    <span class="phpdocumentor-element-found-in__line">437</span>
 
     </aside>
 
@@ -2207,7 +2142,7 @@ cuerpo de la respuesta, ya sea en formato de texto o decodificado de JSON.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/ApiClient.php"><a href="files/src-apiclient.html"><abbr title="src/ApiClient.php">ApiClient.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">444</span>
+    <span class="phpdocumentor-element-found-in__line">382</span>
 
     </aside>
 
@@ -2254,7 +2189,7 @@ objeto con los detalles del error, incluyendo el código y el mensaje.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/ApiClient.php"><a href="files/src-apiclient.html"><abbr title="src/ApiClient.php">ApiClient.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">484</span>
+    <span class="phpdocumentor-element-found-in__line">425</span>
 
     </aside>
 
@@ -2262,7 +2197,7 @@ objeto con los detalles del error, incluyendo el código y el mensaje.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-                    <span class="phpdocumentor-signature__name">throwException</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">throwException</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/contafi-api-client-ApiException.html"><abbr title="\contafi\api_client\ApiException">ApiException</abbr></a></span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -2295,7 +2230,11 @@ uniforme en toda la clase.</p>
 
     
 
-    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type"><a href="classes/contafi-api-client-ApiException.html"><abbr title="\contafi\api_client\ApiException">ApiException</abbr></a></span>
+            </section>
+
 </article>
             </section>
 
@@ -2410,13 +2349,13 @@ uniforme en toda la clase.</p>
                             <li class="phpdocumentor-on-this-page-section__title">Properties</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
-                                                    <li class=""><a href="classes/contafi-api-client-ApiClient.html#property_api_prefix">$api_prefix</a></li>
-                                                    <li class=""><a href="classes/contafi-api-client-ApiClient.html#property_api_token">$api_token</a></li>
-                                                    <li class=""><a href="classes/contafi-api-client-ApiClient.html#property_api_url">$api_url</a></li>
-                                                    <li class=""><a href="classes/contafi-api-client-ApiClient.html#property_api_version">$api_version</a></li>
-                                                    <li class=""><a href="classes/contafi-api-client-ApiClient.html#property_last_response">$last_response</a></li>
-                                                    <li class=""><a href="classes/contafi-api-client-ApiClient.html#property_last_url">$last_url</a></li>
-                                                    <li class=""><a href="classes/contafi-api-client-ApiClient.html#property_rut_emisor">$rut_emisor</a></li>
+                                                    <li class=""><a href="classes/contafi-api-client-ApiClient.html#property_apiPrefix">$apiPrefix</a></li>
+                                                    <li class=""><a href="classes/contafi-api-client-ApiClient.html#property_apiToken">$apiToken</a></li>
+                                                    <li class=""><a href="classes/contafi-api-client-ApiClient.html#property_apiUrl">$apiUrl</a></li>
+                                                    <li class=""><a href="classes/contafi-api-client-ApiClient.html#property_apiVersion">$apiVersion</a></li>
+                                                    <li class=""><a href="classes/contafi-api-client-ApiClient.html#property_lastResponse">$lastResponse</a></li>
+                                                    <li class=""><a href="classes/contafi-api-client-ApiClient.html#property_lastUrl">$lastUrl</a></li>
+                                                    <li class=""><a href="classes/contafi-api-client-ApiClient.html#property_rutContribuyente">$rutContribuyente</a></li>
                                             </ul>
                 </li>
             
@@ -2424,28 +2363,27 @@ uniforme en toda la clase.</p>
             <li>
                 <ul class="phpdocumentor-list -clean">
                                             <li class=""><a href="classes/contafi-api-client-client-Bte.html#method___construct">__construct()</a></li>
-                                            <li class=""><a href="classes/contafi-api-client-client-Bte.html#method_anularBte">anularBte()</a></li>
+                                            <li class=""><a href="classes/contafi-api-client-client-Bte.html#method_anular">anular()</a></li>
                                             <li class=""><a href="classes/contafi-api-client-client-Bte.html#method_calcularMontoBruto">calcularMontoBruto()</a></li>
                                             <li class=""><a href="classes/contafi-api-client-client-Bte.html#method_calcularMontoLiquido">calcularMontoLiquido()</a></li>
                                             <li class=""><a href="classes/contafi-api-client-ApiClient.html#method_consume">consume()</a></li>
-                                            <li class=""><a href="classes/contafi-api-client-client-Bte.html#method_datosBte">datosBte()</a></li>
+                                            <li class=""><a href="classes/contafi-api-client-client-Bte.html#method_datos">datos()</a></li>
                                             <li class=""><a href="classes/contafi-api-client-ApiClient.html#method_delete">delete()</a></li>
-                                            <li class=""><a href="classes/contafi-api-client-client-Bte.html#method_emitirBte">emitirBte()</a></li>
+                                            <li class=""><a href="classes/contafi-api-client-client-Bte.html#method_emitir">emitir()</a></li>
                                             <li class=""><a href="classes/contafi-api-client-ApiClient.html#method_get">get()</a></li>
                                             <li class=""><a href="classes/contafi-api-client-ApiClient.html#method_getBody">getBody()</a></li>
                                             <li class=""><a href="classes/contafi-api-client-ApiClient.html#method_getBodyDecoded">getBodyDecoded()</a></li>
                                             <li class=""><a href="classes/contafi-api-client-ApiClient.html#method_getLastResponse">getLastResponse()</a></li>
                                             <li class=""><a href="classes/contafi-api-client-ApiClient.html#method_getLastUrl">getLastUrl()</a></li>
-                                            <li class=""><a href="classes/contafi-api-client-client-Bte.html#method_htmlBte">htmlBte()</a></li>
-                                            <li class=""><a href="classes/contafi-api-client-client-Bte.html#method_listadoBtes">listadoBtes()</a></li>
+                                            <li class=""><a href="classes/contafi-api-client-client-Bte.html#method_html">html()</a></li>
+                                            <li class=""><a href="classes/contafi-api-client-client-Bte.html#method_listado">listado()</a></li>
                                             <li class=""><a href="classes/contafi-api-client-client-Bte.html#method_listarReceptores">listarReceptores()</a></li>
-                                            <li class=""><a href="classes/contafi-api-client-client-Bte.html#method_pdfBte">pdfBte()</a></li>
+                                            <li class=""><a href="classes/contafi-api-client-client-Bte.html#method_pdf">pdf()</a></li>
                                             <li class=""><a href="classes/contafi-api-client-ApiClient.html#method_post">post()</a></li>
                                             <li class=""><a href="classes/contafi-api-client-ApiClient.html#method_put">put()</a></li>
                                             <li class=""><a href="classes/contafi-api-client-ApiClient.html#method_setRut">setRut()</a></li>
                                             <li class=""><a href="classes/contafi-api-client-ApiClient.html#method_setToken">setToken()</a></li>
                                             <li class=""><a href="classes/contafi-api-client-ApiClient.html#method_setUrl">setUrl()</a></li>
-                                            <li class=""><a href="classes/contafi-api-client-ApiClient.html#method_toArray">toArray()</a></li>
                                             <li class=""><a href="classes/contafi-api-client-ApiClient.html#method_env">env()</a></li>
                                             <li class=""><a href="classes/contafi-api-client-ApiClient.html#method_getError">getError()</a></li>
                                             <li class=""><a href="classes/contafi-api-client-ApiClient.html#method_throwException">throwException()</a></li>

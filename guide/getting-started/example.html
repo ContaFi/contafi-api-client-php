@@ -154,23 +154,85 @@
 
             <pre><code class="language-php">&lt;?php
 
-# Definición de directorio autoload. Necesario si se usa la versión de GitHub.
+// Definición de directorio autoload. Necesario si se usa la versión de GitHub.
 require_once __DIR__ . &#039;/vendor/autoload.php&#039;;
 
-# Importaciones del cliente de API de ContaFi
+// Importaciones del cliente de API de ContaFi
 use contafi\api_client\client\Contribuyentes;
 
-# Instancia de cliente.
+// Instancia de cliente.
 $client = new Contribuyentes();
-# RUT del contribuyente a consultar.
+// RUT del contribuyente a consultar.
 $rut = &quot;12345678-9&quot;;
 
-# Respuesta de solicitud HTTP (POST) de emisión de boleta.
+// Respuesta de solicitud HTTP (POST) de emisión de boleta.
 $response = $client-&gt;datosContribuyente($rut);
 
-# Despliegue del resultado.
+// Despliegue del resultado.
 echo &quot;\n&quot;,$response-&gt;getStatusCode();
 echo &quot;\nCONTRIBUYENTE DATOS: \n&quot;;
+echo &quot;\n&quot;,$response-&gt;getBody()-&gt;getContents(),&quot;\n&quot;;</code></pre>
+
+    </section>
+
+            <section class="section " id="ejemplo-de-emitir-una-bte">
+            <h2>Ejemplo de emitir una BTE</h2>
+
+            
+    <p>A continuación se mostrará un segundo ejemplo en donde se podrá emitir una BTE:</p>
+
+            <pre><code class="language-php">&lt;?php
+
+declare(strict_types=1);
+
+// Definición de directorio autoload. Necesario si se usa la versión de GitHub.
+require_once __DIR__ . &#039;/vendor/autoload.php&#039;;
+
+// Importaciones del cliente de API de ContaFi
+use contafi\api_client\client\Bte;
+
+// Instancia de cliente.
+$client = new Bte();
+// RUT del contribuyente emisor de la BTE.
+$rutEmisor = &#039;12345678-9&#039;;
+
+// Fecha de emisión de la BTE.
+$fecha = date(&#039;Y-m-d&#039;);
+
+// Datos de la BTE a emitir.
+$datosBte = [
+    &#039;Encabezado&#039; =&gt; [
+        &#039;IdDoc&#039; =&gt; [
+            &#039;FchEmis&#039; =&gt; $fecha,
+        ],
+        &#039;Emisor&#039; =&gt; [
+            &#039;RUTEmisor&#039; =&gt; $rutEmisor,
+        ],
+        &#039;Receptor&#039; =&gt; [
+            &#039;RUTRecep&#039; =&gt; &#039;66666666-6&#039;,
+            &#039;RznSocRecep&#039; =&gt; &#039;Receptor generico&#039;,
+            &#039;DirRecep&#039; =&gt; &#039;Santa Cruz&#039;,
+            &#039;CmnaRecep&#039; =&gt; &#039;Santa Cruz&#039;,
+        ],
+    ],
+    &#039;Detalle&#039; =&gt; [
+        [
+            &#039;NmbItem&#039; =&gt; &#039;Prueba integracion ContaFi 1&#039;,
+            &#039;MontoItem&#039; =&gt; 50,
+        ],
+        [
+            &#039;NmbItem&#039; =&gt; &#039;Prueba integracion ContaFi 2&#039;,
+            &#039;MontoItem&#039; =&gt; 100,
+        ],
+    ],
+];
+
+// Obtención de respuesta a la emisión de la BTE.
+$response = $client-&gt;emitir($datosBte);
+
+// Se despliega en consola los resultados.
+echo &quot;\n&quot;,$response-&gt;getStatusCode();
+echo &quot;\nEMITIR BTE: \n&quot;;
 echo &quot;\n&quot;,$response-&gt;getBody()-&gt;getContents(),&quot;\n&quot;;</code></pre>
 
             <div class="phpdocumentor-admonition seealso">

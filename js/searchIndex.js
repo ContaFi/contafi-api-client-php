@@ -56,11 +56,6 @@ Search.appendIndex(
             "summary": "Obtiene\u0020el\u0020cuerpo\u0020de\u0020la\u0020\u00FAltima\u0020respuesta\u0020HTTP\u0020y\u0020lo\u0020decodifica\u0020de\u0020JSON.",
             "url": "classes/contafi-api-client-ApiClient.html#method_getBodyDecoded"
         },                {
-            "fqsen": "\\contafi\\api_client\\ApiClient\u003A\u003AtoArray\u0028\u0029",
-            "name": "toArray",
-            "summary": "Convierte\u0020la\u0020\u00FAltima\u0020respuesta\u0020HTTP\u0020en\u0020un\u0020arreglo\u0020asociativo.",
-            "url": "classes/contafi-api-client-ApiClient.html#method_toArray"
-        },                {
             "fqsen": "\\contafi\\api_client\\ApiClient\u003A\u003Aget\u0028\u0029",
             "name": "get",
             "summary": "Realiza\u0020una\u0020solicitud\u0020GET\u0020a\u0020la\u0020API.",
@@ -101,40 +96,40 @@ Search.appendIndex(
             "summary": "Obtiene\u0020el\u0020valor\u0020de\u0020una\u0020variable\u0020de\u0020entorno.",
             "url": "classes/contafi-api-client-ApiClient.html#method_env"
         },                {
-            "fqsen": "\\contafi\\api_client\\ApiClient\u003A\u003A\u0024api_url",
-            "name": "api_url",
+            "fqsen": "\\contafi\\api_client\\ApiClient\u003A\u003A\u0024apiUrl",
+            "name": "apiUrl",
             "summary": "La\u0020URL\u0020base\u0020de\u0020la\u0020API\u0020de\u0020ContaFi.",
-            "url": "classes/contafi-api-client-ApiClient.html#property_api_url"
+            "url": "classes/contafi-api-client-ApiClient.html#property_apiUrl"
         },                {
-            "fqsen": "\\contafi\\api_client\\ApiClient\u003A\u003A\u0024api_prefix",
-            "name": "api_prefix",
+            "fqsen": "\\contafi\\api_client\\ApiClient\u003A\u003A\u0024apiPrefix",
+            "name": "apiPrefix",
             "summary": "El\u0020prefijo\u0020para\u0020las\u0020rutas\u0020de\u0020la\u0020API.",
-            "url": "classes/contafi-api-client-ApiClient.html#property_api_prefix"
+            "url": "classes/contafi-api-client-ApiClient.html#property_apiPrefix"
         },                {
-            "fqsen": "\\contafi\\api_client\\ApiClient\u003A\u003A\u0024api_version",
-            "name": "api_version",
+            "fqsen": "\\contafi\\api_client\\ApiClient\u003A\u003A\u0024apiVersion",
+            "name": "apiVersion",
             "summary": "La\u0020versi\u00F3n\u0020de\u0020la\u0020API\u0020a\u0020utilizar.",
-            "url": "classes/contafi-api-client-ApiClient.html#property_api_version"
+            "url": "classes/contafi-api-client-ApiClient.html#property_apiVersion"
         },                {
-            "fqsen": "\\contafi\\api_client\\ApiClient\u003A\u003A\u0024api_token",
-            "name": "api_token",
+            "fqsen": "\\contafi\\api_client\\ApiClient\u003A\u003A\u0024apiToken",
+            "name": "apiToken",
             "summary": "El\u0020token\u0020de\u0020autenticaci\u00F3n\u0020para\u0020la\u0020API.",
-            "url": "classes/contafi-api-client-ApiClient.html#property_api_token"
+            "url": "classes/contafi-api-client-ApiClient.html#property_apiToken"
         },                {
-            "fqsen": "\\contafi\\api_client\\ApiClient\u003A\u003A\u0024rut_emisor",
-            "name": "rut_emisor",
+            "fqsen": "\\contafi\\api_client\\ApiClient\u003A\u003A\u0024rutContribuyente",
+            "name": "rutContribuyente",
             "summary": "El\u0020RUT\u0020de\u0020contribuyente.",
-            "url": "classes/contafi-api-client-ApiClient.html#property_rut_emisor"
+            "url": "classes/contafi-api-client-ApiClient.html#property_rutContribuyente"
         },                {
-            "fqsen": "\\contafi\\api_client\\ApiClient\u003A\u003A\u0024last_url",
-            "name": "last_url",
+            "fqsen": "\\contafi\\api_client\\ApiClient\u003A\u003A\u0024lastUrl",
+            "name": "lastUrl",
             "summary": "La\u0020\u00FAltima\u0020URL\u0020utilizada\u0020en\u0020la\u0020solicitud\u0020HTTP.",
-            "url": "classes/contafi-api-client-ApiClient.html#property_last_url"
+            "url": "classes/contafi-api-client-ApiClient.html#property_lastUrl"
         },                {
-            "fqsen": "\\contafi\\api_client\\ApiClient\u003A\u003A\u0024last_response",
-            "name": "last_response",
+            "fqsen": "\\contafi\\api_client\\ApiClient\u003A\u003A\u0024lastResponse",
+            "name": "lastResponse",
             "summary": "La\u0020\u00FAltima\u0020respuesta\u0020recibida\u0020de\u0020la\u0020API.",
-            "url": "classes/contafi-api-client-ApiClient.html#property_last_response"
+            "url": "classes/contafi-api-client-ApiClient.html#property_lastResponse"
         },                {
             "fqsen": "\\contafi\\api_client\\ApiException",
             "name": "ApiException",
@@ -148,32 +143,32 @@ Search.appendIndex(
         },                {
             "fqsen": "\\contafi\\api_client\\client\\Bhe\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "M\u00F3dulo\u0020que\u0020permite\u0020gestionar\u0020las\u0020BHE\u0020registradas\u0020y\/o\u0020sincronizadas\u0020en\u0020ContaFi.",
+            "summary": "M\u00F3dulo\u0020que\u0020permite\u0020gestionar\u0020las\u0020BHE\u0020registradas\u0020y\/o\nsincronizadas\u0020en\u0020ContaFi.",
             "url": "classes/contafi-api-client-client-Bhe.html#method___construct"
         },                {
-            "fqsen": "\\contafi\\api_client\\client\\Bhe\u003A\u003AlistadoBhes\u0028\u0029",
-            "name": "listadoBhes",
-            "summary": "Recurso\u0020que\u0020permite\u0020obtener\u0020el\u0020listado\u0020paginado\u0020de\u0020boletas\u0020de\u0020honorarios\u0020electr\u00F3nicas\u0020recibidas.",
-            "url": "classes/contafi-api-client-client-Bhe.html#method_listadoBhes"
+            "fqsen": "\\contafi\\api_client\\client\\Bhe\u003A\u003Alistado\u0028\u0029",
+            "name": "listado",
+            "summary": "Recurso\u0020que\u0020permite\u0020obtener\u0020el\u0020listado\u0020paginado\u0020de\u0020boletas\u0020de\u0020honorarios\nelectr\u00F3nicas\u0020recibidas.",
+            "url": "classes/contafi-api-client-client-Bhe.html#method_listado"
         },                {
-            "fqsen": "\\contafi\\api_client\\client\\Bhe\u003A\u003AdatosBhe\u0028\u0029",
-            "name": "datosBhe",
-            "summary": "Recurso\u0020para\u0020obtener\u0020los\u0020datos\u0020de\u0020una\u0020boleta\u0020de\u0020honorarios\u0020electr\u00F3nica\u0020recibida.",
-            "url": "classes/contafi-api-client-client-Bhe.html#method_datosBhe"
+            "fqsen": "\\contafi\\api_client\\client\\Bhe\u003A\u003Adatos\u0028\u0029",
+            "name": "datos",
+            "summary": "Recurso\u0020para\u0020obtener\u0020los\u0020datos\u0020de\u0020una\u0020boleta\u0020de\u0020honorarios\nelectr\u00F3nica\u0020recibida.",
+            "url": "classes/contafi-api-client-client-Bhe.html#method_datos"
         },                {
-            "fqsen": "\\contafi\\api_client\\client\\Bhe\u003A\u003ApdfBhe\u0028\u0029",
-            "name": "pdfBhe",
-            "summary": "Recurso\u0020para\u0020obtener\u0020el\u0020PDF\u0020de\u0020una\u0020boleta\u0020de\u0020honorarios\u0020electr\u00F3nica\u0020recibida.",
-            "url": "classes/contafi-api-client-client-Bhe.html#method_pdfBhe"
+            "fqsen": "\\contafi\\api_client\\client\\Bhe\u003A\u003Apdf\u0028\u0029",
+            "name": "pdf",
+            "summary": "Recurso\u0020para\u0020obtener\u0020el\u0020PDF\u0020de\u0020una\u0020boleta\u0020de\u0020honorarios\nelectr\u00F3nica\u0020recibida.",
+            "url": "classes/contafi-api-client-client-Bhe.html#method_pdf"
         },                {
-            "fqsen": "\\contafi\\api_client\\client\\Bhe\u003A\u003AobservarBhe\u0028\u0029",
-            "name": "observarBhe",
-            "summary": "Recurso\u0020que\u0020permite\u0020observar\u0020una\u0020boleta\u0020de\u0020honorarios\u0020electr\u00F3nica\u0020previamente\u0020recibida.",
-            "url": "classes/contafi-api-client-client-Bhe.html#method_observarBhe"
+            "fqsen": "\\contafi\\api_client\\client\\Bhe\u003A\u003Aobservar\u0028\u0029",
+            "name": "observar",
+            "summary": "Recurso\u0020que\u0020permite\u0020observar\u0020una\u0020boleta\u0020de\u0020honorarios\u0020electr\u00F3nica\npreviamente\u0020recibida.",
+            "url": "classes/contafi-api-client-client-Bhe.html#method_observar"
         },                {
             "fqsen": "\\contafi\\api_client\\client\\Bhe\u003A\u003AlistarEmisores\u0028\u0029",
             "name": "listarEmisores",
-            "summary": "Recurso\u0020que\u0020permite\u0020obtener\u0020el\u0020listado\u0020paginado\u0020de\u0020emisores\u0020asociados\u0020a\u0020las\u0020BHE.",
+            "summary": "Recurso\u0020que\u0020permite\u0020obtener\u0020el\u0020listado\u0020paginado\u0020de\u0020emisores\u0020asociados\na\u0020las\u0020BHE.",
             "url": "classes/contafi-api-client-client-Bhe.html#method_listarEmisores"
         },                {
             "fqsen": "\\contafi\\api_client\\client\\Bte",
@@ -183,38 +178,38 @@ Search.appendIndex(
         },                {
             "fqsen": "\\contafi\\api_client\\client\\Bte\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "M\u00F3dulo\u0020que\u0020permite\u0020gestionar\u0020las\u0020BHE\u0020registradas\u0020y\/o\u0020sincronizadas\u0020en\u0020ContaFi.",
+            "summary": "M\u00F3dulo\u0020que\u0020permite\u0020gestionar\u0020las\u0020BTE\u0020registradas\u0020y\/o\u0020sincronizadas\nen\u0020ContaFi.",
             "url": "classes/contafi-api-client-client-Bte.html#method___construct"
         },                {
-            "fqsen": "\\contafi\\api_client\\client\\Bte\u003A\u003AemitirBte\u0028\u0029",
-            "name": "emitirBte",
+            "fqsen": "\\contafi\\api_client\\client\\Bte\u003A\u003Aemitir\u0028\u0029",
+            "name": "emitir",
             "summary": "Recurso\u0020que\u0020permite\u0020emitir\u0020una\u0020BTE.",
-            "url": "classes/contafi-api-client-client-Bte.html#method_emitirBte"
+            "url": "classes/contafi-api-client-client-Bte.html#method_emitir"
         },                {
-            "fqsen": "\\contafi\\api_client\\client\\Bte\u003A\u003AlistadoBtes\u0028\u0029",
-            "name": "listadoBtes",
+            "fqsen": "\\contafi\\api_client\\client\\Bte\u003A\u003Alistado\u0028\u0029",
+            "name": "listado",
             "summary": "Recurso\u0020que\u0020permite\u0020obtener\u0020el\u0020listado\u0020paginado\u0020de\u0020boletas\u0020de\u0020terceros\nelectr\u00F3nicas\u0020emitidas.",
-            "url": "classes/contafi-api-client-client-Bte.html#method_listadoBtes"
+            "url": "classes/contafi-api-client-client-Bte.html#method_listado"
         },                {
-            "fqsen": "\\contafi\\api_client\\client\\Bte\u003A\u003AdatosBte\u0028\u0029",
-            "name": "datosBte",
+            "fqsen": "\\contafi\\api_client\\client\\Bte\u003A\u003Adatos\u0028\u0029",
+            "name": "datos",
             "summary": "Recurso\u0020para\u0020obtener\u0020los\u0020datos\u0020de\u0020una\u0020boleta\u0020de\u0020terceros\u0020electr\u00F3nica\u0020emitida.",
-            "url": "classes/contafi-api-client-client-Bte.html#method_datosBte"
+            "url": "classes/contafi-api-client-client-Bte.html#method_datos"
         },                {
-            "fqsen": "\\contafi\\api_client\\client\\Bte\u003A\u003AhtmlBte\u0028\u0029",
-            "name": "htmlBte",
+            "fqsen": "\\contafi\\api_client\\client\\Bte\u003A\u003Ahtml\u0028\u0029",
+            "name": "html",
             "summary": "Recurso\u0020para\u0020obtener\u0020el\u0020HTML\u0020de\u0020una\u0020boleta\u0020de\u0020terceros\u0020electr\u00F3nica\u0020emitida.",
-            "url": "classes/contafi-api-client-client-Bte.html#method_htmlBte"
+            "url": "classes/contafi-api-client-client-Bte.html#method_html"
         },                {
-            "fqsen": "\\contafi\\api_client\\client\\Bte\u003A\u003ApdfBte\u0028\u0029",
-            "name": "pdfBte",
+            "fqsen": "\\contafi\\api_client\\client\\Bte\u003A\u003Apdf\u0028\u0029",
+            "name": "pdf",
             "summary": "Recurso\u0020para\u0020obtener\u0020el\u0020PDF\u0020de\u0020una\u0020boleta\u0020de\u0020terceros\u0020electr\u00F3nica\u0020emitida.",
-            "url": "classes/contafi-api-client-client-Bte.html#method_pdfBte"
+            "url": "classes/contafi-api-client-client-Bte.html#method_pdf"
         },                {
-            "fqsen": "\\contafi\\api_client\\client\\Bte\u003A\u003AanularBte\u0028\u0029",
-            "name": "anularBte",
+            "fqsen": "\\contafi\\api_client\\client\\Bte\u003A\u003Aanular\u0028\u0029",
+            "name": "anular",
             "summary": "Recurso\u0020que\u0020permite\u0020anular\u0020una\u0020boleta\u0020de\u0020terceros\u0020electr\u00F3nica\u0020previamente\u0020emitida.",
-            "url": "classes/contafi-api-client-client-Bte.html#method_anularBte"
+            "url": "classes/contafi-api-client-client-Bte.html#method_anular"
         },                {
             "fqsen": "\\contafi\\api_client\\client\\Bte\u003A\u003AcalcularMontoLiquido\u0028\u0029",
             "name": "calcularMontoLiquido",
@@ -228,33 +223,33 @@ Search.appendIndex(
         },                {
             "fqsen": "\\contafi\\api_client\\client\\Bte\u003A\u003AlistarReceptores\u0028\u0029",
             "name": "listarReceptores",
-            "summary": "Recurso\u0020que\u0020permite\u0020obtener\u0020el\u0020listado\u0020paginado\u0020de\u0020receptores\u0020asociados\u0020a\u0020las\u0020BTE.",
+            "summary": "Recurso\u0020que\u0020permite\u0020obtener\u0020el\u0020listado\u0020paginado\u0020de\u0020receptores\nasociados\u0020a\u0020las\u0020BTE.",
             "url": "classes/contafi-api-client-client-Bte.html#method_listarReceptores"
         },                {
             "fqsen": "\\contafi\\api_client\\client\\Contribuyentes",
             "name": "Contribuyentes",
-            "summary": "M\u00F3dulo\u0020que\u0020permite\u0020gestionar\u0020contribuyentes\u0020en\u0020ContaFi,\u0020junto\u0020con\u0020los\u0020roles\u0020y\u0020permisos\u0020disponibles.",
+            "summary": "M\u00F3dulo\u0020que\u0020permite\u0020gestionar\u0020contribuyentes\u0020en\u0020ContaFi,\u0020junto\u0020con\u0020los\nroles\u0020y\u0020permisos\u0020disponibles.",
             "url": "classes/contafi-api-client-client-Contribuyentes.html"
         },                {
             "fqsen": "\\contafi\\api_client\\client\\Contribuyentes\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "M\u00F3dulo\u0020que\u0020permite\u0020gestionar\u0020contribuyentes\u0020en\u0020ContaFi,\u0020junto\u0020con\u0020los\u0020roles\u0020y\u0020permisos\u0020disponibles.",
+            "summary": "M\u00F3dulo\u0020que\u0020permite\u0020gestionar\u0020contribuyentes\u0020en\u0020ContaFi,\u0020junto\u0020con\u0020los\nroles\u0020y\u0020permisos\u0020disponibles.",
             "url": "classes/contafi-api-client-client-Contribuyentes.html#method___construct"
         },                {
-            "fqsen": "\\contafi\\api_client\\client\\Contribuyentes\u003A\u003AestadisticasContribuyente\u0028\u0029",
-            "name": "estadisticasContribuyente",
-            "summary": "Recurso\u0020que\u0020permite\u0020obtener\u0020la\u0020estad\u00EDstica\u0020de\u0020un\u0020contribuyente\u0020a\u0020partir\u0020de\u0020su\u0020RUT.",
-            "url": "classes/contafi-api-client-client-Contribuyentes.html#method_estadisticasContribuyente"
+            "fqsen": "\\contafi\\api_client\\client\\Contribuyentes\u003A\u003Aestadisticas\u0028\u0029",
+            "name": "estadisticas",
+            "summary": "Recurso\u0020que\u0020permite\u0020obtener\u0020la\u0020estad\u00EDstica\u0020de\u0020un\u0020contribuyente\u0020a\npartir\u0020de\u0020su\u0020RUT.",
+            "url": "classes/contafi-api-client-client-Contribuyentes.html#method_estadisticas"
         },                {
-            "fqsen": "\\contafi\\api_client\\client\\Contribuyentes\u003A\u003AdatosContribuyente\u0028\u0029",
-            "name": "datosContribuyente",
-            "summary": "Recurso\u0020que\u0020permite\u0020obtener\u0020los\u0020datos\u0020de\u0020un\u0020contribuyente\u0020a\u0020partir\u0020de\u0020su\u0020RUT.",
-            "url": "classes/contafi-api-client-client-Contribuyentes.html#method_datosContribuyente"
+            "fqsen": "\\contafi\\api_client\\client\\Contribuyentes\u003A\u003Adatos\u0028\u0029",
+            "name": "datos",
+            "summary": "Recurso\u0020que\u0020permite\u0020obtener\u0020los\u0020datos\u0020de\u0020un\u0020contribuyente\u0020a\npartir\u0020de\u0020su\u0020RUT.",
+            "url": "classes/contafi-api-client-client-Contribuyentes.html#method_datos"
         },                {
-            "fqsen": "\\contafi\\api_client\\client\\Contribuyentes\u003A\u003AsucursalContribuyente\u0028\u0029",
-            "name": "sucursalContribuyente",
-            "summary": "Recurso\u0020que\u0020permite\u0020obtener\u0020los\u0020datos\u0020de\u0020una\u0020sucursal\u0020de\u0020un\u0020contribuyente\u0020a\u0020partir\u0020de\u0020su\u0020c\u00F3digo.",
-            "url": "classes/contafi-api-client-client-Contribuyentes.html#method_sucursalContribuyente"
+            "fqsen": "\\contafi\\api_client\\client\\Contribuyentes\u003A\u003Asucursal\u0028\u0029",
+            "name": "sucursal",
+            "summary": "Recurso\u0020que\u0020permite\u0020obtener\u0020los\u0020datos\u0020de\u0020una\u0020sucursal\u0020de\u0020un\ncontribuyente\u0020a\u0020partir\u0020de\u0020su\u0020c\u00F3digo.",
+            "url": "classes/contafi-api-client-client-Contribuyentes.html#method_sucursal"
         },                {
             "fqsen": "\\contafi\\api_client\\client\\Contribuyentes\u003A\u003AagregarUsuarioAutorizado\u0028\u0029",
             "name": "agregarUsuarioAutorizado",
@@ -288,7 +283,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\contafi\\api_client\\client\\Facturacion\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "M\u00F3dulo\u0020que\u0020permite\u0020gestionar\u0020proveeedores,\u0020compras\u0020y\u0020ventas\u0020con\u0020facturaci\u00F3n\u0020\u0028DTE\u0029.",
+            "summary": "M\u00F3dulo\u0020que\u0020permite\u0020gestionar\u0020proveeedores,\u0020compras\u0020y\u0020ventas\u0020con\nfacturaci\u00F3n\u0020\u0028DTE\u0029.",
             "url": "classes/contafi-api-client-client-Facturacion.html#method___construct"
         },                {
             "fqsen": "\\contafi\\api_client\\client\\Facturacion\u003A\u003AresumenVentasSinDetalle\u0028\u0029",
@@ -303,17 +298,17 @@ Search.appendIndex(
         },                {
             "fqsen": "\\contafi\\api_client\\client\\Facturacion\u003A\u003AlistadoCompras\u0028\u0029",
             "name": "listadoCompras",
-            "summary": "Recurso\u0020que\u0020permite\u0020obtener\u0020el\u0020listado\u0020paginado\u0020de\u0020documentos\u0020tributarios\u0020electr\u00F3nicos\u0020asociados\u0020a\u0020compras.",
+            "summary": "Recurso\u0020que\u0020permite\u0020obtener\u0020el\u0020listado\u0020paginado\u0020de\u0020documentos\ntributarios\u0020electr\u00F3nicos\u0020asociados\u0020a\u0020compras.",
             "url": "classes/contafi-api-client-client-Facturacion.html#method_listadoCompras"
         },                {
             "fqsen": "\\contafi\\api_client\\client\\Facturacion\u003A\u003AlistadoClientes\u0028\u0029",
             "name": "listadoClientes",
-            "summary": "Recurso\u0020que\u0020permite\u0020obtener\u0020el\u0020listado\u0020paginado\u0020de\u0020clientes\u0020asociados\u0020a\u0020ventas.",
+            "summary": "Recurso\u0020que\u0020permite\u0020obtener\u0020el\u0020listado\u0020paginado\u0020de\u0020clientes\nasociados\u0020a\u0020ventas.",
             "url": "classes/contafi-api-client-client-Facturacion.html#method_listadoClientes"
         },                {
             "fqsen": "\\contafi\\api_client\\client\\Facturacion\u003A\u003AlistadoProveedores\u0028\u0029",
             "name": "listadoProveedores",
-            "summary": "Recurso\u0020que\u0020permite\u0020obtener\u0020el\u0020listado\u0020paginado\u0020de\u0020proveedores\u0020asociados\u0020a\u0020compras.",
+            "summary": "Recurso\u0020que\u0020permite\u0020obtener\u0020el\u0020listado\u0020paginado\u0020de\u0020proveedores\nasociados\u0020a\u0020compras.",
             "url": "classes/contafi-api-client-client-Facturacion.html#method_listadoProveedores"
         },                {
             "fqsen": "\\contafi\\api_client\\client\\IngresosEgresos",
@@ -326,10 +321,10 @@ Search.appendIndex(
             "summary": "M\u00F3dulo\u0020que\u0020permite\u0020manejar\u0020y\u0020listar\u0020los\u0020movimientos\u0020de\u0020dinero\u0020efectuados.",
             "url": "classes/contafi-api-client-client-IngresosEgresos.html#method___construct"
         },                {
-            "fqsen": "\\contafi\\api_client\\client\\IngresosEgresos\u003A\u003AlistadoMovimientos\u0028\u0029",
-            "name": "listadoMovimientos",
+            "fqsen": "\\contafi\\api_client\\client\\IngresosEgresos\u003A\u003Alistado\u0028\u0029",
+            "name": "listado",
             "summary": "Recurso\u0020que\u0020permite\u0020obtener\u0020el\u0020listado\u0020paginado\u0020de\u0020movimientos\n\u0028otros\u0020ingresos\/egresos\u0029\u0020del\u0020contribuyente.",
-            "url": "classes/contafi-api-client-client-IngresosEgresos.html#method_listadoMovimientos"
+            "url": "classes/contafi-api-client-client-IngresosEgresos.html#method_listado"
         },                {
             "fqsen": "\\contafi\\api_client\\client\\Remuneraciones",
             "name": "Remuneraciones",
@@ -341,10 +336,10 @@ Search.appendIndex(
             "summary": "M\u00F3dulo\u0020que\u0020permite\u0020obtener\u0020informaci\u00F3n\u0020de\u0020las\u0020remuneraciones.",
             "url": "classes/contafi-api-client-client-Remuneraciones.html#method___construct"
         },                {
-            "fqsen": "\\contafi\\api_client\\client\\Remuneraciones\u003A\u003AlistadoRemuneraciones\u0028\u0029",
-            "name": "listadoRemuneraciones",
-            "summary": "Recurso\u0020que\u0020permite\u0020obtener\u0020el\u0020listado\u0020paginado\u0020de\u0020remuneraciones\u0020del\u0020contribuyente.",
-            "url": "classes/contafi-api-client-client-Remuneraciones.html#method_listadoRemuneraciones"
+            "fqsen": "\\contafi\\api_client\\client\\Remuneraciones\u003A\u003Alistado\u0028\u0029",
+            "name": "listado",
+            "summary": "Recurso\u0020que\u0020permite\u0020obtener\u0020el\u0020listado\u0020paginado\u0020de\u0020remuneraciones\u0020del\ncontribuyente.",
+            "url": "classes/contafi-api-client-client-Remuneraciones.html#method_listado"
         },                {
             "fqsen": "\\",
             "name": "\\",
