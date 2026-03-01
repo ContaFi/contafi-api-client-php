@@ -13,7 +13,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\contafi\\api_client\\ApiClient",
             "name": "ApiClient",
-            "summary": "Cliente\u0020de\u0020la\u0020API\u0020de\u0020ContaFi",
+            "summary": "Cliente\u0020de\u0020la\u0020API\u0020de\u0020ContaFi.",
             "url": "classes/contafi-api-client-ApiClient.html"
         },                {
             "fqsen": "\\contafi\\api_client\\ApiClient\u003A\u003A__construct\u0028\u0029",

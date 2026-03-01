@@ -162,7 +162,7 @@
 
     </h4>
     <dl class="phpdocumentor-table-of-contents">
-                    <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/contafi-api-client-ApiBase.html"><abbr title="\contafi\api_client\ApiBase">ApiBase</abbr></a></dt><dd>Clase base para las clases que consumen la API (wrappers).</dd>            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/contafi-api-client-ApiClient.html"><abbr title="\contafi\api_client\ApiClient">ApiClient</abbr></a></dt><dd>Cliente de la API de ContaFi</dd>            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/contafi-api-client-ApiException.html"><abbr title="\contafi\api_client\ApiException">ApiException</abbr></a></dt><dd>Clase para las excepciones del cliente de la API.</dd>    </dl>
+                    <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/contafi-api-client-ApiBase.html"><abbr title="\contafi\api_client\ApiBase">ApiBase</abbr></a></dt><dd>Clase base para las clases que consumen la API (wrappers).</dd>            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/contafi-api-client-ApiClient.html"><abbr title="\contafi\api_client\ApiClient">ApiClient</abbr></a></dt><dd>Cliente de la API de ContaFi.</dd>            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/contafi-api-client-ApiException.html"><abbr title="\contafi\api_client\ApiException">ApiException</abbr></a></dt><dd>Clase para las excepciones del cliente de la API.</dd>    </dl>
 
 
 
@@ -210,6 +210,8 @@
                         if (xhr.status < 400 && xhr.responseText) {
                             code.textContent = xhr.responseText;
                             Prism.highlightElement(code);
+                            d=document.getElementsByClassName("line-numbers");
+                            d[0].scrollTop = d[0].children[1].offsetTop;
                             return;
                         }
 
