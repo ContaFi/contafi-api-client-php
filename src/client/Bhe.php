@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 /**
- * ContaFi
- * Copyright (C) SASCO SpA (https://sasco.cl)
+ * ContaFi: Cliente de API en PHP.
+ * Copyright (C) ContaFi <https://www.contafi.cl>
  *
  * Este programa es software libre: usted puede redistribuirlo y/o modificarlo
  * bajo los términos de la GNU Lesser General Public License (LGPL) publicada

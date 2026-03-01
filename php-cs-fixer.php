@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * ContaFi: Cliente de API en PHP - Pruebas Unitarias.
+ * ContaFi: Cliente de API en PHP.
  * Copyright (C) ContaFi <https://www.contafi.cl>
  *
  * Este programa es software libre: usted puede redistribuirlo y/o modificarlo

@@ -5,6 +5,8 @@ Dockerfile
 .vscode/
 **/.DS_Store
 
+composer.lock
+
 var/
 tools/
 build/
@@ -12,5 +14,4 @@ tests/archivos/bhe_emitidas_pdf/*
 tests/archivos/bte_emitidas_pdf/*
 tests/archivos/bte_emitidas_html/*
 
-prueba-ejemplo.php
 phpstan-baseline.neon
