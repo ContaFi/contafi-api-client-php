@@ -81,11 +81,6 @@ Search.appendIndex(
             "summary": "Realiza\u0020una\u0020solicitud\u0020HTTP\u0020a\u0020la\u0020API.",
             "url": "classes/contafi-api-client-ApiClient.html#method_consume"
         },                {
-            "fqsen": "\\contafi\\api_client\\ApiClient\u003A\u003AgetError\u0028\u0029",
-            "name": "getError",
-            "summary": "Extrae\u0020informaci\u00F3n\u0020detallada\u0020sobre\u0020un\u0020error\u0020a\u0020partir\u0020de\u0020la\u0020\u00FAltima\u0020respuesta\u0020HTTP.",
-            "url": "classes/contafi-api-client-ApiClient.html#method_getError"
-        },                {
             "fqsen": "\\contafi\\api_client\\ApiClient\u003A\u003AthrowException\u0028\u0029",
             "name": "throwException",
             "summary": "Lanza\u0020una\u0020ApiException\u0020con\u0020los\u0020detalles\u0020del\u0020\u00FAltimo\u0020error.",
@@ -135,6 +130,21 @@ Search.appendIndex(
             "name": "ApiException",
             "summary": "Clase\u0020para\u0020las\u0020excepciones\u0020del\u0020cliente\u0020de\u0020la\u0020API.",
             "url": "classes/contafi-api-client-ApiException.html"
+        },                {
+            "fqsen": "\\contafi\\api_client\\ApiException\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/contafi-api-client-ApiException.html#method___construct"
+        },                {
+            "fqsen": "\\contafi\\api_client\\ApiException\u003A\u003AgetResponseBody\u0028\u0029",
+            "name": "getResponseBody",
+            "summary": "",
+            "url": "classes/contafi-api-client-ApiException.html#method_getResponseBody"
+        },                {
+            "fqsen": "\\contafi\\api_client\\ApiException\u003A\u003A\u0024responseBody",
+            "name": "responseBody",
+            "summary": "",
+            "url": "classes/contafi-api-client-ApiException.html#property_responseBody"
         },                {
             "fqsen": "\\contafi\\api_client\\client\\Bhe",
             "name": "Bhe",
