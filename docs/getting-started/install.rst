@@ -21,7 +21,7 @@ Si estás utilizando la versión de GitHub, deberás instalar los paquetes neces
 Requerimientos
 --------------
 
-- PHP 8.3 o superior.
+- PHP 8.5 o superior.
 
 - Extensiones de PHP:
     - curl.
