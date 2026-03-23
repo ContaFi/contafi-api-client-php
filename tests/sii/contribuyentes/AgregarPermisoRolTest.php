@@ -25,6 +25,7 @@ use contafi\api_client\ApiException;
 use contafi\api_client\client\Contribuyentes;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use contafi\tests\Helpers\FunctionHelpers;
 
 // TODO: Corregir documentación.
 #[CoversClass(Contribuyentes::class)]
@@ -33,6 +34,7 @@ use PHPUnit\Framework\TestCase;
  */
 class AgregarPermisoRolTest extends TestCase
 {
+    use FunctionHelpers;
     /**
      * Variable que permite desplegar en consola los resultados.
      *
@@ -49,6 +51,7 @@ class AgregarPermisoRolTest extends TestCase
 
     public static function setUpBeforeClass(): void
     {
+        self::requireEnv('CONTAFI_API_TOKEN');
         self::$verbose = env(varname: 'TEST_VERBOSE', default: false);
         self::$client = new Contribuyentes();
     }
@@ -65,12 +68,19 @@ class AgregarPermisoRolTest extends TestCase
     {
         try {
             $response = self::$client->obtenerRoles();
+
+            $idRoles = json_decode(
+                json: $response->getBody()->getContents(),
+                associative: true
+            );
+
+            if($idRoles === []){
+                $this->markTestSkipped("No existen roles para el contribuyente");
+            }
+
             $rolId = (int)env(
                 varname: 'TEST_ROL_ID',
-                default: json_decode(
-                    json: $response->getBody()->getContents(),
-                    associative: true
-                )[0]['id']
+                default: $idRoles[0]['id']
             );
 
             $data = [
@@ -88,11 +98,7 @@ class AgregarPermisoRolTest extends TestCase
                 "\n";
             }
         } catch (ApiException $e) {
-            throw new ApiException(message: sprintf(
-                '[ApiException %d] %s',
-                $e->getCode(),
-                $e->getMessage()
-            ));
+            $this->handleApiException($e);
         }
     }
 }

@@ -25,6 +25,7 @@ use contafi\api_client\ApiException;
 use contafi\api_client\client\Bte;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use contafi\tests\Helpers\FunctionHelpers;
 
 #[CoversClass(Bte::class)]
 /**
@@ -32,6 +33,7 @@ use PHPUnit\Framework\TestCase;
  */
 class CalcularMontoLiquidoTest extends TestCase
 {
+    use FunctionHelpers;
     /**
      * Variable que permite desplegar en consola los resultados.
      *
@@ -48,6 +50,7 @@ class CalcularMontoLiquidoTest extends TestCase
 
     public static function setUpBeforeClass(): void
     {
+        self::requireEnv('CONTAFI_API_TOKEN');
         self::$verbose = env(varname: 'TEST_VERBOSE', default: false);
         self::$client = new Bte();
     }
@@ -79,11 +82,7 @@ class CalcularMontoLiquidoTest extends TestCase
                 "\n";
             }
         } catch (ApiException $e) {
-            throw new ApiException(message: sprintf(
-                '[ApiException %d] %s',
-                $e->getCode(),
-                $e->getMessage()
-            ));
+            $this->handleApiException($e);
         }
     }
 }

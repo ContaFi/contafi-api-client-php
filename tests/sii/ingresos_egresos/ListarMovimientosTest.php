@@ -25,6 +25,7 @@ use contafi\api_client\ApiException;
 use contafi\api_client\client\IngresosEgresos;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use contafi\tests\Helpers\FunctionHelpers;
 
 #[CoversClass(IngresosEgresos::class)]
 /**
@@ -33,6 +34,7 @@ use PHPUnit\Framework\TestCase;
  */
 class ListarMovimientosTest extends TestCase
 {
+    use FunctionHelpers;
     /**
      * Variable que permite desplegar en consola los resultados.
      *
@@ -49,6 +51,7 @@ class ListarMovimientosTest extends TestCase
 
     public static function setUpBeforeClass(): void
     {
+        self::requireEnv('CONTAFI_API_TOKEN');
         self::$verbose = env(varname: 'TEST_VERBOSE', default: false);
         self::$client = new IngresosEgresos();
     }
@@ -63,7 +66,7 @@ class ListarMovimientosTest extends TestCase
      */
     public function testListarMovimientos(): void
     {
-        $periodo = env(varname: 'TEST_PERIODO', default: date('Ym'));
+        $periodo = env('TEST_PERIODO') ?: date('Ym');
         try {
             $response = self::$client->listado($periodo);
 
@@ -76,11 +79,7 @@ class ListarMovimientosTest extends TestCase
                 "\n";
             }
         } catch (ApiException $e) {
-            throw new ApiException(message: sprintf(
-                '[ApiException %d] %s',
-                $e->getCode(),
-                $e->getMessage()
-            ));
+            $this->handleApiException($e);
         }
     }
 }

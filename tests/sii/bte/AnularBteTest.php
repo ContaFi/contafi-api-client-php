@@ -25,6 +25,7 @@ use contafi\api_client\ApiException;
 use contafi\api_client\client\Bte;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use contafi\tests\Helpers\FunctionHelpers;
 
 #[CoversClass(Bte::class)]
 /**
@@ -32,6 +33,7 @@ use PHPUnit\Framework\TestCase;
  */
 class AnularBteTest extends TestCase
 {
+    use FunctionHelpers;
     /**
      * Variable que permite desplegar en consola los resultados.
      *
@@ -55,6 +57,7 @@ class AnularBteTest extends TestCase
 
     public static function setUpBeforeClass(): void
     {
+        self::requireEnv('CONTAFI_API_TOKEN');
         self::$verbose = env(varname: 'TEST_VERBOSE', default: false);
         self::$client = new Bte();
         self::$testNumero = env('TEST_NRO_BTE', null);
@@ -86,7 +89,8 @@ class AnularBteTest extends TestCase
 
                 self::$testNumero = $bodyDecoded['numero'];
             }
-            $response = self::$client->anular(self::$testNumero, $data);
+
+            $response = self::$client->anular((int)self::$testNumero, $data);
 
             $this->assertSame(200, $response->getStatusCode());
 
@@ -97,11 +101,7 @@ class AnularBteTest extends TestCase
                 "\n";
             }
         } catch (ApiException $e) {
-            throw new ApiException(message: sprintf(
-                '[ApiException %d] %s',
-                $e->getCode(),
-                $e->getMessage()
-            ));
+            $this->handleApiException($e);
         }
     }
 }

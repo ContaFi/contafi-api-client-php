@@ -20,13 +20,18 @@
             "contafi\\api_client\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "contafi\\tests\\Helpers\\": "tests/Helpers/"
+        }
+    },
     "require": {
-        "php": "^8.4",
+        "php": "^8.5",
         "guzzlehttp/guzzle": "^7.10"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.94",
-        "phpstan/phpstan": "^1.12",
+        "phpstan/phpstan": "^2",
         "phpunit/phpunit": "^13.0",
         "vlucas/phpdotenv": "^5.6"
     },

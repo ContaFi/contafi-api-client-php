@@ -64,6 +64,6 @@
     </logging>
     <php>
         <ini name="memory_limit" value="-1" />
-        <env name="CONTAFI_API_URL" value="https://contafi.cl" />
+        <env name="CONTAFI_API_URL" value="https://app.contafi.cl" />
     </php>
 </phpunit>

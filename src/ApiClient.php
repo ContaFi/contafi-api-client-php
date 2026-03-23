@@ -87,9 +87,9 @@ class ApiClient
      * @param string|null $url URL base de la API.
      */
     public function __construct(
-        string $token = null,
-        string $rut = null,
-        string $url = null
+        ?string $token = null,
+        ?string $rut = null,
+        ?string $url = null
     ) {
         $this->apiToken = $token ?: $this->env('CONTAFI_API_TOKEN');
         if (!$this->apiToken) {
@@ -146,7 +146,7 @@ class ApiClient
      *
      * @return string|null
      */
-    public function getLastUrl(): string
+    public function getLastUrl(): ?string
     {
         return $this->lastUrl;
     }
@@ -156,7 +156,7 @@ class ApiClient
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function getLastResponse(): ResponseInterface
+    public function getLastResponse(): ?ResponseInterface
     {
         return $this->lastResponse;
     }
@@ -354,60 +354,26 @@ class ApiClient
         // realizar consulta HTTP
         try {
             $this->lastResponse = $client->request(
-                $method,
-                $this->lastUrl,
-                $options
+                method: $method,
+                uri: $this->lastUrl,
+                options: $options
             );
-        } catch (\GuzzleHttp\Exception\GuzzleException $e) {
+        } catch (\GuzzleHttp\Exception\BadResponseException $e) {
+            // Obtener la respuesta de la llamada.
             $this->lastResponse = $e->getResponse();
+
+            // Si no es un error 401 con problema de sesión se lanza la excepción.
             $this->throwException();
+        } catch (\GuzzleHttp\Exception\GuzzleException $e) {
+            throw new ApiException('Error de conexión con el SII: ' . $e->getMessage(), 500);
         }
+
+        // Si no se reintentó se lanza excepción por no ser código 200.
         if ($this->getLastResponse()->getStatusCode() != 200) {
             $this->throwException();
         }
+
         return $this;
-    }
-
-    /**
-     * Extrae información detallada sobre un error a partir de la última respuesta HTTP.
-     *
-     * Este método analiza la última respuesta HTTP para extraer información
-     * detallada sobre un error que ocurrió durante la solicitud. Devuelve un
-     * objeto con los detalles del error, incluyendo el código y el mensaje.
-     *
-     * @return object Detalles del error con propiedades 'code' y 'message'.
-     */
-    private function getError(): object
-    {
-        $data = $this->getBodyDecoded();
-        $response = $this->getLastResponse();
-        $statusCode = $response ? $response->getStatusCode() : null;
-        $reasonPhrase = $response ? $response
-        ->getReasonPhrase() : 'Sin respuesta';
-
-        if ($data) {
-            $code = isset($data['code']) ? $data['code'] : $statusCode;
-            $message = isset(
-                $data['message']
-            ) ? $data['message'] : $reasonPhrase;
-        } else {
-            $code = $statusCode;
-            $message = $reasonPhrase;
-        }
-
-        // Se maneja el caso donde no se encuentra un mensaje de error específico
-        if (!$message || $message === '') {
-            $message = sprintf(
-                '[ContaFi API] Código HTTP %d: %s',
-                $code,
-                $reasonPhrase
-            );
-        }
-
-        return (object)[
-            'code' => $code,
-            'message' => $message,
-        ];
     }
 
     /**
@@ -422,8 +388,25 @@ class ApiClient
      */
     private function throwException(): ApiException
     {
-        $error = $this->getError();
-        throw new ApiException($error->message, $error->code);
+        $response = $this->getLastResponse();
+
+        if (!$response) {
+            throw new ApiException(
+                message: 'Error desconocido.',
+                code: 500,
+                responseBody: null
+            );
+        }
+
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
+        $message = $body !== '' ? $body : $response->getReasonPhrase();
+
+        throw new ApiException(
+            message: $message,
+            code: $status,
+            responseBody: $body
+        );
     }
 
     /**
